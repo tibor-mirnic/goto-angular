@@ -1,0 +1,25 @@
+# Deployment
+
+By default Angular's approach to environments is not flexible enough. You need to set sensitive data in `environment.env.ts` files, also for each environment you have to rebuild the application.
+
+We can use the advantage of the javascript and after the build apply the enviroment info by replacing unique strings that serve as a placeholders.
+
+Placeholders are set in `environment.prod.ts` but can be anywhere in the application.
+
+## Dependencies
+
+Run `npm install --save-dev @types/fs-extra` to install type definitions for `fs-extra`.
+
+## Build
+
+Update the `arhitect:build:options:outputPath` in `angular.json` to `dist/angular`;
+
+Run `npm run build` to generate build in `dist/angular` folder. The `build` script needs to target `--prod` enviroment.
+
+Run `npm run build:environment` to copy contents of `dist/angular` to `dist/build` and apply environment variables.
+
+## Environment variables
+
+Te ensure that you do not replace something important in generated `*.js` files use longer environment variable names.
+
+See the example in the `environment.prod.ts`;
