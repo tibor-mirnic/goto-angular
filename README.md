@@ -8,5 +8,8 @@ Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The 
 
 ## Table of Contents
 
-- [Proxy Configuration](https://github.com/tibor-mirnic/goto-angular/blob/master/proxy/README.md)
+1. [Proxy Configuration](https://github.com/tibor-mirnic/goto-angular/blob/master/proxy/README.md)
+
+2. Deployment
+    1. [Environment Variables](https://github.com/tibor-mirnic/goto-angular/blob/master/deployment/README.md)
 
