@@ -4,11 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "run-s build:proxy-config serve:proxy-config",
-    "serve:proxy-config": "ng serve --proxy-config proxy/config.js",
+    "serve:proxy-config": "ng serve --proxy-config scripts/proxy/config.js",
     "build": "run-s build:angular build:environment",
     "build:angular": "ng build --prod",
-    "build:proxy-config": "tsc -p proxy",
-    "build:environment": "ts-node deployment/apply-environment.ts",
+    "build:proxy-config": "tsc -p scripts/proxy",
+    "build:environment": "ts-node scripts/deployment/apply-environment.ts",
+    "build:version": "ts-node scripts/versioning/apply-version.ts",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -37,6 +38,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "@types/tough-cookie": "^4.0.0",
+    "@types/uuid": "^8.0.0",
     "codelyzer": "^6.0.0-next.1",
     "fs-extra": "^9.0.1",
     "jasmine-core": "~3.5.0",

@@ -10,8 +10,8 @@ enum ENV_VARS {
 try {
   console.log(`Applying ${process.env[ENV_VARS.GOTO_ANGULAR_ENVIRONMENT_NAME]} environment variables`);
 
-  const buildPath = join(__dirname, '../dist/angular');
-  const envBuildPath = join(__dirname, '../dist/build');
+  const buildPath = join(__dirname, '../../dist/angular');
+  const envBuildPath = join(__dirname, '../../dist/build');
 
   // Clean environment build
   if (existsSync(envBuildPath)) {
