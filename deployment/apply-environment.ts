@@ -1,6 +1,6 @@
 import { join } from 'path';
-import { mkdirSync, readdirSync, readFileSync, writeFileSync, statSync, copyFileSync } from 'fs';
-import { existsSync, removeSync, copySync } from 'fs-extra';
+import { mkdirSync, readdirSync, readFileSync, writeFileSync,
+  statSync, copyFileSync, existsSync, removeSync, copySync } from 'fs-extra';
 
 enum ENV_VARS {
   GOTO_ANGULAR_ENVIRONMENT_NAME = 'GOTO_ANGULAR_ENVIRONMENT_NAME',
