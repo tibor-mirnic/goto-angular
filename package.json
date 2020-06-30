@@ -8,7 +8,7 @@
     "build": "run-s build:angular build:environment",
     "build:angular": "ng build --prod",
     "build:proxy-config": "tsc -p scripts/proxy",
-    "build:environment": "ts-node scripts/deployment/apply-environment.ts",
+    "build:environment": "ts-node scripts/environment/apply-environment.ts",
     "build:version": "ts-node scripts/versioning/apply-version.ts",
     "test": "ng test",
     "lint": "ng lint",

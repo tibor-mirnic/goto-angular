@@ -1,4 +1,4 @@
-# Deployment
+# Environment
 
 By default Angular's approach to environments is not flexible enough. You need to set sensitive data in `environment.env.ts` files, also for each environment you have to rebuild the application.
 
@@ -22,7 +22,7 @@ Run `npm run build:environment` to copy contents of `dist/angular` to `dist/buil
 
 `npm run build` script will first run `build:angular` and then `build:environment`.
 
-## Environment variables
+## Variables
 
 Te ensure that you do not replace something important in generated `*.js` files use longer environment variable names.
 

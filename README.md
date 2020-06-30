@@ -10,6 +10,7 @@ Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The 
 
 1. [Proxy Configuration](https://github.com/tibor-mirnic/goto-angular/blob/master/scripts/proxy/README.md)
 
-2. Deployment
-    1. [Environment Variables](https://github.com/tibor-mirnic/goto-angular/blob/master/scripts/deployment/README.md)
+2. [Environment Variables](https://github.com/tibor-mirnic/goto-angular/blob/master/scripts/environment/README.md)
+
+3. [Application Versioning](https://github.com/tibor-mirnic/goto-angular/blob/master/scripts/versioning/README.md)
 
