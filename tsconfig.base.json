@@ -17,7 +17,8 @@
       "dom"
     ],
     "paths": {
-      "@environment": ["src/environments/environment"]
+      "@environment": ["src/environments/environment"],
+      "@modules/*": ["src/app/modules/*"]
     }
   }
 }
