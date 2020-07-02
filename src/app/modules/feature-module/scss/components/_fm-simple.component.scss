@@ -1,0 +1,5 @@
+@mixin -fm-simple($background-color) {
+  .fm-simple {
+    background-color: $background-color;
+  }
+}

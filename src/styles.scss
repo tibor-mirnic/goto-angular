@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use "app/modules/core-ui/scss";
+
+@use "app/modules/feature-module/scss" as featureModule;
+
+@include featureModule.load(
+  $background-color: blue,
+  $border-color: green
+);
+
+.dark-theme {
+  @include featureModule.load(
+    $background-color: black, 
+    $border-color: gray
+  );
+}
