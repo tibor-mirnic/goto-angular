@@ -1,8 +1,10 @@
 @import "components/fm-simple.component";
+@import "components/fm-complex.component";
 
 @mixin load(
   $background-color: red,
   $border-color: yellow
 ) {
   @include -fm-simple($background-color: $background-color);
+  @include -fm-complex($border-color: $border-color);
 }

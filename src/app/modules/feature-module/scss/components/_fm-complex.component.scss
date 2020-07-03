@@ -1,0 +1,5 @@
+@mixin -fm-complex($border-color) {
+  .fm-complex {
+    border-color: $border-color;
+  }
+}

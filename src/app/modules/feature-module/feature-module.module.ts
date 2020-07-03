@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { FeatureModuleRoutingModule } from './feature-module-routing.module';
 import { FEATURE_MODULE_API_URL } from './models/tokens';
 import { FmSimpleComponent } from './components/fm-simple/fm-simple.component';
+import { FmComplexComponent } from './components/fm-complex/fm-complex.component';
 
 @NgModule({
-  declarations: [FmSimpleComponent],
+  declarations: [FmSimpleComponent, FmComplexComponent],
   exports: [FmSimpleComponent],
   imports: [
     CommonModule,

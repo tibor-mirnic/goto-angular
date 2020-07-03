@@ -50,6 +50,8 @@ export interface IGetUsersResponse {
 
 We user `enums` to define various types, events etc. Enums should not have an `Enum` suffix.
 
+For better readability enums sent from `api` should use string conversion.
+
 `models/enums/user-type.ts`
 ```
 export enum UserType {
