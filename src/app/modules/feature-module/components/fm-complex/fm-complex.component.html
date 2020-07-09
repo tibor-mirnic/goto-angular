@@ -1,1 +1,25 @@
-<p>fm-complex works!</p>
+<h1>{{ view.model.name }}</h1>
+<h3>
+  <span>Model is <span class="fm-complex-status">{{ view.model.status | enumDescription : view.complexModelStatusDescription }}</span></span>
+  <button type="button"
+    class="fm-complex-btn-status"
+    (click)="onChangeStatus()">
+    Change Status
+  </button>
+  <select [(ngModel)]="view.model.status">
+    <option *ngFor="let item of view.complexModelStatusDropdown.items"
+      [ngValue]="item.id">
+      {{ item.text }}
+    </option>
+  </select>
+</h3>
+<h3>{{ view.model.description }}</h3>
+<ul>
+  <li *ngFor="let item of view.model.items">
+    <span>{{ item.name }} : {{ item.description }}</span>
+    <button type="button"
+      (click)="onDeleteItem(item.id)">
+      Delete
+    </button>
+  </li>
+</ul>

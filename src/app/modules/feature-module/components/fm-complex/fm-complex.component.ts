@@ -1,14 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+
+import { FmComplexView } from './fm-complex.view';
 
 @Component({
   selector: 'fm-complex',
-  templateUrl: './fm-complex.component.html'
+  templateUrl: './fm-complex.component.html',
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [FmComplexView]
 })
-export class FmComplexComponent implements OnInit {
+export class FmComplexComponent {
 
-  constructor() { }
+  @HostBinding('class')
+  private _isCmp = 'fm-complex widget';
 
-  ngOnInit(): void {
+  constructor(
+    public view: FmComplexView
+  ) { }
+
+  onChangeStatus() {
+    this.view.changeStatus();
   }
 
+  onDeleteItem(id: number) {
+    this.view.deleteItem(id);
+  }
 }

@@ -1,5 +1,29 @@
 @mixin -fm-complex($border-color) {
   .fm-complex {
+    border-width: 10px;
+    border-style: solid;
     border-color: $border-color;
+
+    &-status {
+      display: inline-flex;
+      color: red;
+      width: 150px;
+    }
+
+    &-btn-status {
+      margin: 0 20px;
+    }
+
+    ul {
+      li {
+        display: flex;
+        width: 300px;
+        
+        span {
+          display: inline-flex;
+          flex: 1;
+        }
+      }
+    }
   }
 }

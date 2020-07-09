@@ -1,6 +1,8 @@
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
+import { CoreUIModule } from '@modules/core-ui';
 import { FeatureModuleRoutingModule } from './feature-module-routing.module';
 import { FEATURE_MODULE_API_URL } from './models/tokens';
 import { FmSimpleComponent } from './components/fm-simple/fm-simple.component';
@@ -8,9 +10,13 @@ import { FmComplexComponent } from './components/fm-complex/fm-complex.component
 
 @NgModule({
   declarations: [FmSimpleComponent, FmComplexComponent],
-  exports: [FmSimpleComponent],
+  exports: [FmSimpleComponent, FmComplexComponent],
   imports: [
     CommonModule,
+    FormsModule,
+
+    CoreUIModule,
+    
     FeatureModuleRoutingModule
   ]
 })

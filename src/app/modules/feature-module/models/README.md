@@ -60,6 +60,18 @@ export enum UserType {
 }
 ```
 
+If we want to have a description for each `enum` type then we create a `description` enum. Description enums should always have a `Description` suffix.
+
+We match the `value` of the `enum` to be the `key` of the `description` enum.
+
+`models/enums/user-type.ts`
+```
+export enum UserTypeDescription {
+  ADMIN = 'Applicatoin administrator',
+  USER = 'Simple user`
+}
+```
+
 ## Tokens
 
 Here we define `InjectionToken<T>`'s that can be imported anywhere in the module. We are using tokens becase we want to free module of any dependency, event when importing from an `environment`. Tokens are provided in `forRoot` methor or in a `root` module.
