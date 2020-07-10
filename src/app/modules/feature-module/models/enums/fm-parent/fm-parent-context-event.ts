@@ -1,0 +1,4 @@
+export enum FmParentContextEvent {
+  CHILD_ONE_UPDATED = 'CHILD_ONE_UPDATED',
+  CHILD_TWO_UPDATED = 'CHILD_TWO_UPDATED'
+}

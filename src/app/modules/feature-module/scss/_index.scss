@@ -1,10 +1,18 @@
 @import "components/fm-simple.component";
 @import "components/fm-complex.component";
 
+@import "components/fm-parent/fm-parent.component";
+@import "components/fm-parent/fm-child-one.component";
+@import "components/fm-parent/fm-child-two.component";
+
 @mixin load(
   $background-color: red,
   $border-color: yellow
 ) {
   @include -fm-simple($background-color: $background-color);
   @include -fm-complex($border-color: $border-color);
+
+  @include -fm-parent($background-color: $background-color, $border-color: $border-color);
+  @include -fm-child-one($background-color: $background-color, $border-color: $border-color);
+  @include -fm-child-two($background-color: $background-color, $border-color: $border-color);
 }

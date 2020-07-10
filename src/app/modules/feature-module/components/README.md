@@ -50,6 +50,11 @@ export class FmSimpleComponent {
 }
 ```
 
+## ChangeDetectorRef
+
+Use `markForCheck` to detect changes up the component tree.
+Use `detectChanges` to detect changes on the caller and down the component tree.
+
 ## Fields
 
 All field initialization should be in the component `constructor`. However, there a few exceptions, one is for various subscriptions that should be subscribed in `ngOnInit` lifecycle method and the other is when we are using `@HostBinding` to apply `class` or some `attrs`.
@@ -142,6 +147,26 @@ Generaly there are two types of outputs that are emitted from a component
 ```
 @Output didSaveForm: EventEmitter<void>; // Form saved in the components
 @Output doSaveForm: EventEmitter<IForm>; // Form model published to subscriber
+```
+
+## Subscriptions
+
+Always define subscriptions in `ngOnit`.
+
+To avoid declaring a field for every subscription just create an array of `Subscription` and in `ngOnDestroy` unsubscribe by looping trough the array.
+
+```
+private _subscriptions: Subscription[];
+
+ngOnInit() {
+  this._subscriptions = [
+    this._observable.subscribe()
+  ];
+}
+
+ngOnDestroy() {
+  this._subscriptions.forEach(a => a.unsubscribe());
+}
 ```
 
 ## HTML template

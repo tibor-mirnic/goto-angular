@@ -1,6 +1,6 @@
 import { IDropdownItem } from '../models/dropdown-item';
 
-export enum EnumType {}
+import { EnumType } from '../models/enum/enum-type';
 
 export class DropdownEnum {
 
