@@ -4,7 +4,7 @@ import { Config } from 'http-proxy-middleware';
 const domainRegex = /your-backend-server\.com/gmi;
 
 module.exports = {
-  'api/v1/*': {
+  '/api/v1/*': {
     target: 'https://api.your-backend-server.com/v1',
     secure: false,
     pathRewrite: {
