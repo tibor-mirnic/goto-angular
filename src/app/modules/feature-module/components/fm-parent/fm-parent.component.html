@@ -1,4 +1,18 @@
 <h1>This the parent component</h1>
+<div>
+  <button type="button"
+    (click)="onUpdateChildOne()">
+    Update Child One
+  </button>
+  <button type="button"
+    (click)="onUpdateChildTwo()">
+    Update Child Two
+  </button>
+  <button type="button"
+    (click)="onRefreshChildTwo()">
+    Refresh Child Two
+  </button>
+</div>
 
 <fm-child-one></fm-child-one>
 

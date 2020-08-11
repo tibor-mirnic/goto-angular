@@ -1,3 +1,3 @@
 export enum ContextEvent {
-  INIT = 'MODEL_CHANGED'
+  INIT = 'MODEL_INIT'
 }

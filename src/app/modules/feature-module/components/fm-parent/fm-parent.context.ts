@@ -30,4 +30,34 @@ export class FmParentContext extends Context<IFmParentModel, FmParentContextEven
       throw error;
     }
   }
+
+  public updateChildOne() {
+    this.updateModel(
+      FmParentContextEvent.CHILD_ONE_UPDATED,
+      model => ({
+        ...model,
+        childOne: {
+          ...model.childOne,
+          name: 'Updated First Child Name'
+        }
+      })
+    );
+  }
+
+  public updateChildTwo(name: string) {
+    this.updateModel(
+      FmParentContextEvent.CHILD_TWO_UPDATED,
+      model => ({
+        ...model,
+        childTwo: {
+          ...model.childTwo,
+          name: name
+        }
+      })
+    );
+  }
+
+  public refreshChildTwo() {
+    this.executeCommand(FmParentContextCommand.REFRESH_CHILD_TWO);
+  }
 }

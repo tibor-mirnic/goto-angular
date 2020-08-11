@@ -7,3 +7,5 @@ export * from './util';
 export * from './util/dropdown-enum';
 export * from './util/context';
 
+export * from './services/subscriptions.service';
+

@@ -49,7 +49,7 @@ export abstract class Context<T, E extends typeof EnumType, C extends typeof Enu
     }
   }
 
-  public updateModel(
+  protected updateModel(
     event: E | ContextEvent,
     update: (model: T) => T
     ) {
@@ -57,20 +57,20 @@ export abstract class Context<T, E extends typeof EnumType, C extends typeof Enu
     this.publishEvent(event);
   }
 
-  public executeCommand(command: C | ContextCommand) {
+  protected executeCommand(command: C | ContextCommand) {
     this._onCommand.next(command);
   }
+
+  protected setIsLoading(isLoading: boolean) {
+    this._isLoading.next(isLoading);
+  }
+  
+  protected abstract getModel(): Promise<T>;
 
   private publishEvent(event: E | ContextEvent) {
     this._onEvent.next({
       model: this._model,
       event: event
     });
-  }
-
-  public abstract getModel(): Promise<T>;
-
-  private setIsLoading(isLoading: boolean) {
-    this._isLoading.next(isLoading);
   }
 }
