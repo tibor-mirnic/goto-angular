@@ -19,3 +19,6 @@ Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The 
         1. [View](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/modules/feature-module/components/fm-complex/README.md)
         2. [Context](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/modules/feature-module/components/fm-parent/README.md)
     1. [Models](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/modules/feature-module/models/README.md)
+
+5. [Core UI](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/modules/core-ui/README.md)
+    1. [Run Events Outside Angular](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/modules/core-ui/directives/run-events-outside-angular.directive.ts)
