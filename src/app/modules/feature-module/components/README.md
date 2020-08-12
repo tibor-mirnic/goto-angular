@@ -66,21 +66,26 @@ Private fields should always have a `_` prefix. Fields, getters, setters, method
 ```
 export class ExampleComponent implements OnInit, OnDestroy {
 
+  // Private Getters, Setters and fields should always be defined at the top of the file
   @HostBinding('class.widget')
   private _isWidget = true;
+  
+  @HostBinding('class.flex-widget')
+  private get _isFlexWidget(): boolean {
+    return !this._isWidget;
+  }
 
   private _privateField: string;
 
   publicField: number;
 
+  get privateField(): string {
+    return this._privateField;
+  }
+
   constructor() {
     this._privateField = 'private';
     this.publicField = 12;
-  }
-
-  // Public Getters and Setters should always be defined below the `constructor`
-  get privateField(): string {
-    return this._privateField;
   }
 
   // Component Lifecycle and internal methods
@@ -94,10 +99,9 @@ export class ExampleComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {}
 
-  // Private Getters and Setters and methods should always be defined at the bottom of the file
-  @HostBinding('class.flex-widget')
-  private get isFlexWidget(): boolean {
-    return !this._isWidget;
+  // Private methods should always be defined at the bottom of the file
+  private privateMethod(): boolean {
+    return true;
   }
 
 }
@@ -199,14 +203,14 @@ Component `*.scss` files are located in `module/scss/components` folder. All com
 export class SimplePanelComponent {
  ...
  @HostBinding('class.simple-panel')
- private _isSimplePanelComponent = true;
+ private _baseClass = true;
  ...
 }
 export class ComplexPanelComponent {
  ...
  // If you need to set multiple classes on a root element
  @HostBinding('class')
- private _isComplexPanelComponent = 'complex-panel widget flex-box';
+ private _baseClass = 'complex-panel widget flex-box';
  ...
 }
 

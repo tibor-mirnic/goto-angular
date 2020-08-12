@@ -1,0 +1,11 @@
+<input #inputField
+  [tabindex]="tabIndex"
+  [attr.name]="name"
+  [attr.type]="type"
+  [placeholder]="placeholder"
+  [(ngModel)]="innerValue"
+  [cuiRunEventsOutsideAngular]="inputEvents" />
+<span *ngIf="clearVisible"
+  [cuiRunEventsOutsideAngular]="clearEvents">
+  X
+</span>

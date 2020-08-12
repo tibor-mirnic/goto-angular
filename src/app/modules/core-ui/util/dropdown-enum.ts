@@ -29,7 +29,7 @@ export class DropdownEnum {
       }));
   }
 
-  public setFilterFn(filter: (item: IDropdownItem<string>) => boolean) {
+  public setFilterFn(filter: (item: IDropdownItem<string>) => boolean): void {
     this._filterFn = filter;
   }
 

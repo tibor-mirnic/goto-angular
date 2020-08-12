@@ -18,7 +18,7 @@ import { FmParentContextCommand } from '../../../models/enums/fm-parent/fm-paren
 export class FmChildTwoComponent implements OnInit {
 
   @HostBinding('class')
-  private _isCmp = 'fm-child-two widget';
+  private _baseClass = 'fm-child-two widget';
 
   name: string;
 
@@ -47,7 +47,7 @@ export class FmChildTwoComponent implements OnInit {
       this._context.onCommand
         .pipe(filter(cmd => cmd === FmParentContextCommand.REFRESH_CHILD_TWO))
         .subscribe(() => {
-          this._context.updateChildTwo('Second Child')
+          this._context.updateChildTwo('Second Child');
         })
     ]);
   }

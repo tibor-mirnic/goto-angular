@@ -19,13 +19,13 @@
     "directive-selector": [
       true,
       "attribute",
-      ["app", "fm"],
+      ["app", "fm", "cui"],
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      ["app", "fm"],
+      ["app", "fm", "cui"],
       "kebab-case"
     ],
     "eofline": true,

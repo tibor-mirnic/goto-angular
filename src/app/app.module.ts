@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { environment } from '@environment';
 
 // Modules
+import { CoreUIModule } from '@modules/core-ui';
 import { SharedModule } from '@modules/shared';
 import { FeatureModuleModule } from '@modules/feature-module';
 
@@ -18,6 +19,7 @@ import { FeatureModuleModule } from '@modules/feature-module';
     BrowserModule,
 
     // Modules
+    CoreUIModule,
     SharedModule,
     FeatureModuleModule.forRoot(environment.apiUrl),
     AppRoutingModule

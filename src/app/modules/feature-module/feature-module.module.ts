@@ -19,7 +19,7 @@ import { FmChildTwoComponent } from './components/fm-parent/fm-child-two/fm-chil
     FormsModule,
 
     CoreUIModule,
-    
+
     FeatureModuleRoutingModule
   ]
 })

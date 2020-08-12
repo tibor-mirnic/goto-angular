@@ -1,16 +1,16 @@
-import { Directive, Input, ElementRef, NgZone, Renderer2, OnInit } from '@angular/core';
+import { Directive, Input, ElementRef, NgZone, Renderer2, OnInit, OnDestroy } from '@angular/core';
 
 import { IRunOutsideAngularEvent } from '../models/run-outside-angular-event';
 import { EmptyCallback } from '../models/callback';
 
 @Directive({
-  selector: '[runEventsOutsideAngular]'
+  selector: '[cuiRunEventsOutsideAngular]'
 })
-export class RunEventsOutsideAngularDirective implements OnInit {
+export class RunEventsOutsideAngularDirective implements OnInit, OnDestroy {
 
   private _listeners: EmptyCallback[];
-  
-  @Input('runEventsOutsideAngular')
+
+  @Input('cuiRunEventsOutsideAngular')
   public events: IRunOutsideAngularEvent[];
 
   constructor(
@@ -22,14 +22,14 @@ export class RunEventsOutsideAngularDirective implements OnInit {
     this.events = [];
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this._ngZone.runOutsideAngular(() => {
       const el = this._elementRef.nativeElement;
       this.events.forEach(e => this._listeners.push(this._renderer.listen(el, e.name, e.callback)));
     });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this._listeners.forEach(a => a());
   }
 

@@ -28,16 +28,16 @@ export class FmComplexView {
     this.complexModelStatusDropdown = new DropdownEnum(ComplexModelStatusDescription);
   }
 
-  public changeStatus() {
+  public changeStatus(): void {
     let newStatus: ComplexModelStatus = ComplexModelStatus.ACTIVE;
     if (this.model.status === ComplexModelStatus.ACTIVE) {
       newStatus = ComplexModelStatus.INACTIVE;
     }
-    
+
     this.model.status = newStatus;
   }
 
-  public deleteItem(id: number) {
-    this.model.items = this.model.items.filter(a => a.id != id);
+  public deleteItem(id: number): void {
+    this.model.items = this.model.items.filter(a => a.id !== id);
   }
 }

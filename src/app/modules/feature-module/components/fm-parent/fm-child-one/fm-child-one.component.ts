@@ -16,7 +16,7 @@ import { FmParentContextEvent } from '../../../models/enums/fm-parent/fm-parent-
 export class FmChildOneComponent implements OnInit {
 
   @HostBinding('class')
-  private _isCmp = 'fm-child-two widget';
+  private _baseClass = 'fm-child-two widget';
 
   name: string;
 

@@ -14,7 +14,7 @@ import { FmParentContext } from './fm-parent.context';
 export class FmParentComponent implements OnInit {
 
   @HostBinding('class')
-  private _isCmp = 'fm-parent widget';
+  private _baseClass = 'fm-parent widget';
 
   public isLoading: boolean;
 
@@ -32,19 +32,19 @@ export class FmParentComponent implements OnInit {
     this._context.init();
   }
 
-  onUpdateChildOne() {
-    this._context.updateChildOne();  
+  onUpdateChildOne(): void {
+    this._context.updateChildOne();
   }
 
-  onUpdateChildTwo() {
-    this._context.updateChildTwo('Updated First Child Name');  
+  onUpdateChildTwo(): void {
+    this._context.updateChildTwo('Updated First Child Name');
   }
 
-  onRefreshChildTwo() {
-    this._context.refreshChildTwo();  
+  onRefreshChildTwo(): void {
+    this._context.refreshChildTwo();
   }
 
-  private setLoadingState(isLoading: boolean) {
+  private setLoadingState(isLoading: boolean): void {
     this.isLoading = isLoading;
     this._changeDetectorRef.detectChanges();
   }

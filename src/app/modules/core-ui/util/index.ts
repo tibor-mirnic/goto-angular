@@ -3,11 +3,11 @@ export const implementsInterface = <T>(
   functionName: string
 ): obj is T => {
   return (obj as T)[functionName] !== undefined;
-}
+};
 
 export const timeout = async (ms = 0): Promise<any> => {
   return new Promise(resolve => setTimeout(() => resolve(), ms));
-}
+};
 
 // param key {String}
 // param reverse {Boolean} OrderByDescending
@@ -30,7 +30,7 @@ export const sortBy = (
   };
 
   return compareFunction;
-}
+};
 
 export const toDictionary = <T>(
   array: T[],
@@ -46,7 +46,7 @@ export const toDictionary = <T>(
 
     return acc;
   }, {});
-}
+};
 
 export const clone = <T>(
   context?: T,
@@ -59,7 +59,7 @@ export const clone = <T>(
   }
 
   return cloned;
-}
+};
 
 export const jsonStringify = (obj: any): string | null => {
   let asString = null;
@@ -72,7 +72,7 @@ export const jsonStringify = (obj: any): string | null => {
   }
 
   return asString;
-}
+};
 
 export const jsonParse = <T>(parsed: string): T | null => {
   let asObject: T = null;
@@ -85,7 +85,7 @@ export const jsonParse = <T>(parsed: string): T | null => {
   }
 
   return asObject;
-}
+};
 
 export const convertToBase64 = (b: Blob): Promise<string> => {
   return new Promise((resolve, reject) => {
@@ -102,8 +102,8 @@ export const convertToBase64 = (b: Blob): Promise<string> => {
 
     fr.readAsDataURL(b);
   });
-}
+};
 
 export const cloneClass = <T>(obj: T): T => {
   return Object.assign(Object.create(Object.getPrototypeOf(obj)), obj);
-}
+};

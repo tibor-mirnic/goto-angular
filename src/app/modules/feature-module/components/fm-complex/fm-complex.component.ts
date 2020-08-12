@@ -12,17 +12,17 @@ import { FmComplexView } from './fm-complex.view';
 export class FmComplexComponent {
 
   @HostBinding('class')
-  private _isCmp = 'fm-complex widget';
+  private _baseClass = 'fm-complex widget';
 
   constructor(
     public view: FmComplexView
   ) { }
 
-  onChangeStatus() {
+  onChangeStatus(): void {
     this.view.changeStatus();
   }
 
-  onDeleteItem(id: number) {
+  onDeleteItem(id: number): void {
     this.view.deleteItem(id);
   }
 }

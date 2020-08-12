@@ -1,4 +1,4 @@
 export interface IRunOutsideAngularEvent {
   name: string;
-  callback: (event: any) => boolean | void
+  callback: (event: any) => boolean | void;
 }
