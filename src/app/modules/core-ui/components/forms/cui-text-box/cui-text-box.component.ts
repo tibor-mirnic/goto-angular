@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, forwardRef, Input, Output,
-  EventEmitter, ChangeDetectorRef, Injector, Optional, HostBinding, ViewRef, NgZone, ViewChild, ElementRef } from '@angular/core';
+  EventEmitter, ChangeDetectorRef, Injector, Optional, HostBinding, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, Validator, NgControl, NgForm,
   FormGroupDirective, AbstractControl, ValidationErrors } from '@angular/forms';
 
-import { IRunOutsideAngularEvent } from '@modules/core-ui/models/run-outside-angular-event';
+import { safeDetectChanges } from './../../../util/angular';
+import { IRunOutsideAngularEvent } from './../../../models/run-outside-angular-event';
 
 export type TextBoxInputType = 'text' | 'password';
 
@@ -39,9 +40,9 @@ export class CuiTextBoxComponent implements ControlValueAccessor, Validator, OnI
   private _suppressBlur: boolean;
 
   private _control: NgControl;
-  private onValueChange: (value: any) => void;
-  private onControlTouched: () => void;
-  private onValidatorChange: () => void;
+  private _onValueChange: (value: any) => void;
+  private _onControlTouched: () => void;
+  private _onValidatorChange: () => void;
 
   private get _invalid(): boolean {
     const isInvalid = this._control && this._control.invalid;
@@ -86,7 +87,7 @@ export class CuiTextBoxComponent implements ControlValueAccessor, Validator, OnI
 
     this.touchControl();
 
-    this.onValueChange(this._innerValue);
+    this._onValueChange(this._innerValue);
   }
 
   @HostBinding('class.cui-text-box--clearable')
@@ -102,7 +103,7 @@ export class CuiTextBoxComponent implements ControlValueAccessor, Validator, OnI
     private _injector: Injector,
     private _ngZone: NgZone,
     @Optional() private parentForm: NgForm,
-    @Optional() private parentFormGroup: FormGroupDirective,
+    @Optional() private parentFormGroup: FormGroupDirective
   ) {
     this._focused = false;
     this._suppressBlur = false;
@@ -120,9 +121,9 @@ export class CuiTextBoxComponent implements ControlValueAccessor, Validator, OnI
     this.didClear = new EventEmitter();
     this.didKeyDownEnter = new EventEmitter();
 
-    this.onValueChange = (value: any) => {};
-    this.onControlTouched = () => {};
-    this.onValidatorChange = () => {};
+    this._onValueChange = (value: any) => {};
+    this._onControlTouched = () => {};
+    this._onValidatorChange = () => {};
 
     this.inputEvents = [{
       name: 'focus',
@@ -157,17 +158,16 @@ export class CuiTextBoxComponent implements ControlValueAccessor, Validator, OnI
     }
 
     this._innerValue = value;
-    if (!(this._changeDetectorRef as ViewRef).destroyed) {
-    this._changeDetectorRef.detectChanges();
-    }
+
+    safeDetectChanges(this._changeDetectorRef);
   }
 
   registerOnChange(fn: any): void {
-    this.onValueChange = fn;
+    this._onValueChange = fn;
   }
 
   registerOnTouched(fn: any): void {
-    this.onControlTouched = fn;
+    this._onControlTouched = fn;
   }
 
   setDisabledState?(isDisabled: boolean): void {
@@ -182,13 +182,13 @@ export class CuiTextBoxComponent implements ControlValueAccessor, Validator, OnI
   }
 
   registerOnValidatorChange(fn: () => void): void {
-    this.onValidatorChange = fn;
+    this._onValidatorChange = fn;
   }
   // Validator END
 
   private touchControl(): void {
     if (!this._touched && !this.disabled && !this.readonly) {
-      this.onControlTouched();
+      this._onControlTouched();
     }
   }
 
@@ -203,7 +203,7 @@ export class CuiTextBoxComponent implements ControlValueAccessor, Validator, OnI
     if (!this.disabled && !this.readonly && !this._suppressBlur) {
       this._focused = false;
       this._ngZone.run(() => {
-        this.onControlTouched();
+        this._onControlTouched();
         this.didBlur.next();
       });
     }
@@ -219,7 +219,7 @@ export class CuiTextBoxComponent implements ControlValueAccessor, Validator, OnI
       this.inputField.nativeElement.blur();
 
       this._ngZone.run(() => {
-        this.onControlTouched();
+        this._onControlTouched();
         this.didKeyDownEnter.next();
       });
     }
@@ -230,7 +230,8 @@ export class CuiTextBoxComponent implements ControlValueAccessor, Validator, OnI
       this.innerValue = null;
 
       this._ngZone.run(() => {
-        this._changeDetectorRef.detectChanges();
+        safeDetectChanges(this._changeDetectorRef);
+
         this.didClear.next();
       });
     }
