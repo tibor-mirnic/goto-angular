@@ -23,4 +23,4 @@ Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The 
 5. [Core UI](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/modules/core-ui/README.md)
     1. [Run Events Outside Angular](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/modules/core-ui/directives/README.md)
     2. [Control Value Accessor](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/modules/core-ui/components/forms/cui-text-box/README.md)
-    2. [Control Value Accessor](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/modules/core-ui/components/forms/cui-text-box/README.md#Change Detection)
+    3. [Change Detection](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/modules/core-ui/components/forms/cui-text-box/README.md#change-detection)
