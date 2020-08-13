@@ -8,4 +8,9 @@ import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/
 })
 export class AppComponent {
 
+  textbox: string;
+
+  constructor() {
+    this.textbox = 'Textbox value';
+  }
 }

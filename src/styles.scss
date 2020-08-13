@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
-@use "app/modules/core-ui/scss";
+@use "app/modules/core-ui/scss" as coreUIModule;
 
 @use "app/modules/feature-module/scss" as featureModule;
+
+@include coreUIModule.load();
 
 @include featureModule.load(
   $background-color: blue,

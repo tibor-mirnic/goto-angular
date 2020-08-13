@@ -3,9 +3,11 @@
   [attr.name]="name"
   [attr.type]="type"
   [placeholder]="placeholder"
+  [readonly]="readonly"
+  [disabled]="disabled"
   [(ngModel)]="innerValue"
   [cuiRunEventsOutsideAngular]="inputEvents" />
-<span *ngIf="clearVisible"
+<div *ngIf="clearVisible"
   [cuiRunEventsOutsideAngular]="clearEvents">
-  X
-</span>
+  x
+</div>

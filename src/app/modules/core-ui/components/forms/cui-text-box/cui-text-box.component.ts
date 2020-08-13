@@ -89,6 +89,7 @@ export class CuiTextBoxComponent implements ControlValueAccessor, Validator, OnI
     this.onValueChange(this._innerValue);
   }
 
+  @HostBinding('class.cui-text-box--clearable')
   get clearVisible(): boolean {
     return this.innerValue && !this.readonly && !this.disabled;
   }

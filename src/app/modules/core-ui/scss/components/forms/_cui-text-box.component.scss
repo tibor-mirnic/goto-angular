@@ -1,0 +1,47 @@
+@mixin -cui-text-box() {
+  .cui-text-box {
+    display: inline-flex;
+    width: 120px;
+    position: relative;
+    border: 1px solid green;
+
+    input {
+      width: 0px;
+      flex: 1;
+      padding: 4px 6px;
+      margin: 0;
+      border: none;
+      outline: none;
+    }
+
+    div {
+      padding: 0 3px;
+      text-align: center;
+      width: 20px;
+
+      &:hover {
+        cursor: pointer;
+        color: red;
+      }
+    }
+
+    &--clearable {
+      input {
+        padding-right: 0;
+      }
+    }
+
+    &--invalid {
+      border-color: lightcoral;
+
+      input {
+        background-color: lightcoral;
+        color: black;
+      }
+      
+      input::placeholder {
+        color: gray;
+      }
+    }
+  }
+}

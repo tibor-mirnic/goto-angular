@@ -1,4 +1,13 @@
 <fm-simple></fm-simple>
 <fm-complex></fm-complex>
 <fm-parent></fm-parent>
-<cui-text-box></cui-text-box>
+<h1>Core UI</h1>
+<form form="ngForm">
+  <cui-text-box
+    name="text-box-one"
+    placeholder="Test"
+    [(ngModel)]="textbox">
+  </cui-text-box>
+
+  {{ textbox }}
+</form>
