@@ -18,9 +18,11 @@ Update the `arhitect:build:options:outputPath` in `angular.json` to `dist/angula
 
 Run `npm run build:angular` to generate build in `dist/angular` folder. The `build` script needs to target `--prod` enviroment.
 
-Run `npm run build:environment` to copy contents of `dist/angular` to `dist/build` and apply environment variables.
+Run `npm build:scripts` to generate `scripts/*/*.js`.
 
-`npm run build` script will first run `build:angular` and then `build:environment`.
+Run `npm run apply:environment` to copy contents of `dist/angular` to `dist/build` and apply environment variables.
+
+`npm run build` script will first run `build:angular` and then `build:scripts` and then `apply:environment`.
 
 ## Variables
 

@@ -14,7 +14,9 @@ Run `npm install --save-dev @types/uuid` to install type definitions for `uuid`.
 
 ## Build
 
-Run `npm run build:version` to generate generate `dist/build/assets/version.json` and apply application version.
+Run `npm build:scripts` to generate `scripts/*/*.js`.
+
+Run `npm run apply:version` to generate generate `dist/build/assets/version.json` and apply application version.
 
 ## version.json
 

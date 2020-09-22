@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "run-s build:proxy-config serve:proxy-config",
+    "start": "run-s build:scripts serve:proxy-config",
     "serve:proxy-config": "ng serve --proxy-config scripts/proxy/config.js",
-    "build": "run-s build:angular build:environment",
+    "build": "run-s build:angular build:scripts apply:environment",
     "build:angular": "ng build --prod",
-    "build:proxy-config": "tsc -p scripts/proxy",
-    "build:environment": "ts-node scripts/environment/apply-environment.ts",
-    "build:version": "ts-node scripts/versioning/apply-version.ts",
+    "build:scripts": "tsc -p scripts",
+    "apply:environment": "node scripts/environment/apply-environment.js",
+    "apply:version": "node scripts/versioning/apply-version.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

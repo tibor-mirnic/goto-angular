@@ -18,7 +18,7 @@ Run `npm install --save-dev npm-run-all` to install `npm-run-all` package.
 
 ## Build
 
-Run `npm build:proxy-config` to generate `scripts/proxy/config.js`.
+Run `npm build:scripts` to generate `scripts/*/*.js`.
 
 Because `webpack-dev-server` can only accept compiled `javascript` files and we do not want to deal with the generated files a `.gitignore` was added with `*.js` in it.
 
@@ -28,7 +28,7 @@ Run `npm serve:proxy-config` to run `webpack-dev-server` with `scripts/proxy/con
 
 ## Run
 
-`start` script will first run `build:proxy-config` and then `serve:proxy-config`.
+`start` script will first run `build:sripts` and then `serve:proxy-config`.
 
 ## Config
 
