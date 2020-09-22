@@ -8,7 +8,7 @@ Placeholders are set in `environment.prod.ts` but can be anywhere in the applica
 
 ## Dependencies
 
-Run `npm install --save-dev @fs-extra` to install `fs-extra` package.
+Run `npm install --save-dev fs-extra` to install `fs-extra` package.
 
 Run `npm install --save-dev @types/fs-extra` to install type definitions for `fs-extra`.
 
