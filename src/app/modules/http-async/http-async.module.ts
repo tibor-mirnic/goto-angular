@@ -1,5 +1,4 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { HTTP_ASYNC_CONFIG } from './models/tokens';
@@ -9,12 +8,7 @@ import { HttpAuthorizationInterceptor } from './interceptors/http-authorization.
 import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptor';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 
-@NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
-})
+@NgModule()
 export class HttpAsyncModule {
 
   constructor(
@@ -33,16 +27,20 @@ export class HttpAsyncModule {
         useValue: config
       }, {
         provide: HTTP_INTERCEPTORS,
-        useClass: HttpHeadersInterceptor
+        useClass: HttpHeadersInterceptor,
+        multi: true
       }, {
         provide: HTTP_INTERCEPTORS,
-        useClass: HttpTimeoutInterceptor
+        useClass: HttpTimeoutInterceptor,
+        multi: true
       }, {
         provide: HTTP_INTERCEPTORS,
-        useClass: HttpAuthorizationInterceptor
+        useClass: HttpAuthorizationInterceptor,
+        multi: true
       }, {
         provide: HTTP_INTERCEPTORS,
-        useClass: HttpErrorInterceptor
+        useClass: HttpErrorInterceptor,
+        multi: true
       }]
     };
   }

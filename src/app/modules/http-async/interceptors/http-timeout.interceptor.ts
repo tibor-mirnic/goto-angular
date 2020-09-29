@@ -22,20 +22,20 @@ export class HttpTimeoutInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    let requestTimeout = 0;
     const requestTimeoutHeader = request.headers.get(REQUEST_TIMEOUT);
+    let requestTimeout = Number.parseInt(requestTimeoutHeader, 10);
+    const cloned = request.clone({
+      headers: request.headers.delete(REQUEST_TIMEOUT)
+    });
 
-    if (requestTimeoutHeader) {
-      requestTimeout = Number.parseInt(requestTimeoutHeader, 10);
-      request = request.clone({
-        headers: request.headers.delete(REQUEST_TIMEOUT)
-      });
+    if (Number.isNaN(requestTimeout)) {
+      requestTimeout = this._httpConfig.defaultTimeout;
     }
 
     return next
-      .handle(request)
+      .handle(cloned)
       .pipe(
-        timeout(requestTimeout || this._httpConfig.defaultTimeout)
+        timeout(requestTimeout)
       );
   }
 }

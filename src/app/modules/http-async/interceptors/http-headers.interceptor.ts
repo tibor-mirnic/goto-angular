@@ -22,24 +22,17 @@ export class HttpHeadersInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-
-    const headers = {
-      'Content-Type': 'application/json',
-      'Cache-Control': 'no-cache',
-      ['Pragma']: 'no-cache',
-      ['Expires']: '-1',
-      [X_APPLICATION_ID]: this._httpConfig.applicationId,
-      [X_REQUEST_ID]: v4()
-    };
-
-    request = request.clone({
-      headers: new HttpHeaders({
-        ...request.headers,
-        ...headers
-      })
+    const cloned = request.clone({
+      headers: request.headers
+        .set('Content-Type', 'application/json')
+        .set('Cache-Control', 'no-cache')
+        .set('Pragma', 'no-cache')
+        .set('Expires', '-1')
+        .set(X_APPLICATION_ID, this._httpConfig.applicationId)
+        .set(X_REQUEST_ID, v4())
     });
 
     return next
-      .handle(request);
+      .handle(cloned);
   }
 }

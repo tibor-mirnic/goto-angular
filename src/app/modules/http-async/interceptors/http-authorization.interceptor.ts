@@ -4,10 +4,10 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor, HttpHeaders
+  HttpInterceptor, HttpClient
 } from '@angular/common/http';
 
-import { Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { HTTP_ASYNC_CONFIG } from '../models/tokens';
@@ -18,36 +18,31 @@ import { ACCESS_TOKEN_REFRESHING, SKIP_AUTHORIZATION } from '../models/http-head
 export class HttpAuthorizationInterceptor implements HttpInterceptor {
 
   constructor(
+    private _httpClient: HttpClient,
     @Inject(HTTP_ASYNC_CONFIG) private _httpConfig: IHttpAsyncConfig
   ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    const skipAuthorizationHeader = request.headers.get(SKIP_AUTHORIZATION);
+    const isUnauthorized = skipAuthorizationHeader === 'true';
+    const cloned = request.clone({
+      headers: request.headers.delete(SKIP_AUTHORIZATION)
+    });
 
-    let isUnauthorized = false;
-    const xRequestUnauthorizedHeader = request.headers.get(SKIP_AUTHORIZATION);
-
-    if (xRequestUnauthorizedHeader) {
-      isUnauthorized = xRequestUnauthorizedHeader === 'true';
-      request = request.clone({
-        headers: request.headers.delete(SKIP_AUTHORIZATION)
-      });
-    }
 
     if (isUnauthorized) {
       return next
-        .handle(request);
+        .handle(cloned);
     }
 
-    return from(this._httpConfig.accessTokenFactory)
+    return this._httpConfig.accessTokenFactory(this._httpClient)
       .pipe(
         switchMap(token =>
           next.handle(
-            request.clone({
-              headers: new HttpHeaders({
-                ...request.headers,
-                ['Authorization']: `Bearer ${token}`,
-                [ACCESS_TOKEN_REFRESHING]: 'true'
-              })
+            cloned.clone({
+              headers: cloned.headers
+                .set('Authorization', `Bearer ${token}`)
+                .set(ACCESS_TOKEN_REFRESHING, 'true')
             })
           )
         )

@@ -26,18 +26,14 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    let isAccessTokenRefreshing = false;
     const accessTokenRefreshingHeader = request.headers.get(ACCESS_TOKEN_REFRESHING);
-
-    if (accessTokenRefreshingHeader) {
-      isAccessTokenRefreshing = accessTokenRefreshingHeader === 'true';
-      request = request.clone({
-        headers: request.headers.delete(ACCESS_TOKEN_REFRESHING)
-      });
-    }
+    const isAccessTokenRefreshing = accessTokenRefreshingHeader === 'true';
+    const cloned = request.clone({
+      headers: request.headers.delete(ACCESS_TOKEN_REFRESHING)
+    });
 
     return next
-      .handle(request)
+      .handle(cloned)
       .pipe(
         catchError(error => {
           let message = null;

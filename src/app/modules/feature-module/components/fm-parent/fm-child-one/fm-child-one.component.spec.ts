@@ -1,6 +1,9 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { SubscriptionsService } from '@modules/core-ui';
+
 import { FmChildOneComponent } from './fm-child-one.component';
+import { FmParentContext } from '../fm-parent.context';
 
 describe('FmChildOneComponent', () => {
   let component: FmChildOneComponent;
@@ -8,7 +11,8 @@ describe('FmChildOneComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ FmChildOneComponent ]
+      declarations: [ FmChildOneComponent ],
+      providers: [FmParentContext, SubscriptionsService]
     })
     .compileComponents();
   }));
