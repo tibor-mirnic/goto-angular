@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CuiTextBoxComponent } from './cui-text-box.component';
 
@@ -6,7 +6,7 @@ describe('CuiTextBoxComponent', () => {
   let component: CuiTextBoxComponent;
   let fixture: ComponentFixture<CuiTextBoxComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CuiTextBoxComponent ]
     })
