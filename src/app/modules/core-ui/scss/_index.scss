@@ -3,6 +3,6 @@
 @import "./components/forms/cui-text-box.component";
 
 @mixin load() {
-  @include -widget();
+  @include -cui-widget();
   @include -cui-text-box();
 }

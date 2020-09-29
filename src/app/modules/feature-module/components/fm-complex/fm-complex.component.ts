@@ -12,7 +12,7 @@ import { FmComplexView } from './fm-complex.view';
 export class FmComplexComponent {
 
   @HostBinding('class')
-  private _baseClass = 'fm-complex widget';
+  private _baseClass = 'fm-complex cui-widget';
 
   constructor(
     public view: FmComplexView

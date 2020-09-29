@@ -67,7 +67,7 @@ Private fields should always have a `_` prefix. Fields, getters, setters, method
 export class ExampleComponent implements OnInit, OnDestroy {
 
   // Private Getters, Setters and fields should always be defined at the top of the file
-  @HostBinding('class.widget')
+  @HostBinding('class.cui-widget')
   private _isWidget = true;
   
   @HostBinding('class.flex-widget')
@@ -210,7 +210,7 @@ export class ComplexPanelComponent {
  ...
  // If you need to set multiple classes on a root element
  @HostBinding('class')
- private _baseClass = 'complex-panel widget flex-box';
+ private _baseClass = 'complex-panel cui-widget flex-box';
  ...
 }
 

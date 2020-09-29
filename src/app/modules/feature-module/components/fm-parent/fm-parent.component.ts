@@ -14,7 +14,7 @@ import { FmParentContext } from './fm-parent.context';
 export class FmParentComponent implements OnInit {
 
   @HostBinding('class')
-  private _baseClass = 'fm-parent widget';
+  private _baseClass = 'fm-parent cui-widget';
 
   public isLoading: boolean;
 

@@ -18,7 +18,7 @@ import { FmParentContextCommand } from '../../../models/enums/fm-parent/fm-paren
 export class FmChildTwoComponent implements OnInit {
 
   @HostBinding('class')
-  private _baseClass = 'fm-child-two widget';
+  private _baseClass = 'fm-child-two cui-widget';
 
   name: string;
 

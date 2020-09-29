@@ -9,7 +9,7 @@ import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, HostBind
 export class FmSimpleComponent implements OnInit {
 
   @HostBinding('class')
-  private _baseClass = 'fm-simple widget';
+  private _baseClass = 'fm-simple cui-widget';
 
   constructor() { }
 
