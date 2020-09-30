@@ -3,7 +3,7 @@ import { IQueryParams } from '../query-params';
 export interface IHttpRequest {
   resourcePath: string;
   queryParams?: IQueryParams;
-  unauthorized?: boolean;
+  skipAuthorization?: boolean;
   timeout?: number;
 }
 

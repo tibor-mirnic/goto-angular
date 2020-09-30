@@ -10,7 +10,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { ACCESS_TOKEN_REFRESHING } from '../models/http-headers';
+import { REFRESH_ACCESS_TOKEN } from '../models/http-headers';
 import { ErrorBase } from '../models/errors/base';
 import { AuthenticationError, AuthorizationError, ConnectionError } from '../models/errors/auth';
 import { BadRequestError } from '../models/errors/user-friendly';
@@ -26,10 +26,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const accessTokenRefreshingHeader = request.headers.get(ACCESS_TOKEN_REFRESHING);
-    const isAccessTokenRefreshing = accessTokenRefreshingHeader === 'true';
+    const refreshAccessTokenHeader = request.headers.get(REFRESH_ACCESS_TOKEN);
+    const isAccessTokenRefreshing = refreshAccessTokenHeader === 'true';
     const cloned = request.clone({
-      headers: request.headers.delete(ACCESS_TOKEN_REFRESHING)
+      headers: request.headers.delete(REFRESH_ACCESS_TOKEN)
     });
 
     return next
@@ -47,12 +47,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             message = error.message;
           }
 
-          if (isAccessTokenRefreshing) {
-            er = error.status === 401 ? new AuthenticationError() : new ConnectionError();
-            return throwError(er);
-          }
-
           if (error.status === 400) {
+            if (isAccessTokenRefreshing) {
+              return throwError(new AuthenticationError());
+            }
+
             er = new BadRequestError(message);
           }
 

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/comm
 
 import { IHttpPostRequest, IHttpRequest } from '../models/request/http-request';
 import { IRequestOptions } from '../models/request/request-options';
-import { REQUEST_TIMEOUT, SKIP_AUTHORIZATION } from '../models/http-headers';
+import { OVERRIDE_TIMEOUT, SKIP_AUTHORIZATION } from '../models/http-headers';
 
 @Injectable({
   providedIn: 'root'
@@ -81,10 +81,10 @@ export class HttpClientAsync {
     const headers = {};
 
     if (request.timeout) {
-      headers[REQUEST_TIMEOUT] = request.timeout.toString();
+      headers[OVERRIDE_TIMEOUT] = request.timeout.toString();
     }
 
-    if (request.unauthorized) {
+    if (request.skipAuthorization) {
       headers[SKIP_AUTHORIZATION] = 'true';
     }
 

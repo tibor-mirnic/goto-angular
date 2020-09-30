@@ -1,8 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClientAsync } from '../services/http-client-async';
 
 export interface IHttpAsyncConfig {
   applicationId: string;
   defaultTimeout: number;
-  accessTokenFactory: (httpClient: HttpClient) => Observable<string>;
+  accessTokenFactory: (httpClientAsync: HttpClientAsync) => Promise<string>;
 }
