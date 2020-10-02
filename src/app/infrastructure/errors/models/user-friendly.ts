@@ -1,5 +1,5 @@
 import { ErrorBase } from './base';
-import { ErrorType } from '../enum/error-type';
+import { ErrorType } from './enum/error-type';
 
 export class UserFriendlyError extends ErrorBase {
   constructor(message = 'You have ana error', name = 'User Friendly') {

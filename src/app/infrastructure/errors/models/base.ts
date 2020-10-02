@@ -1,4 +1,4 @@
-import { ErrorType } from '../enum/error-type';
+import { ErrorType } from './enum/error-type';
 
 export interface IErrorBase {
   name: string;

@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { environment } from '@environment';
 
 // Modules
+import { ErrorsModule } from '@modules/errors';
+import { HttpAsyncModule } from '@modules/http-async';
 import { CoreUIModule } from '@modules/core-ui';
 import { SharedModule } from '@modules/shared';
 import { FeatureModuleModule } from '@modules/feature-module';
@@ -21,6 +23,8 @@ import { FeatureModuleModule } from '@modules/feature-module';
     FormsModule,
 
     // Modules
+    ErrorsModule,
+    HttpAsyncModule,
     CoreUIModule,
     SharedModule,
     FeatureModuleModule.forRoot(environment.apiUrl),

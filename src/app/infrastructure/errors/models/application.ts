@@ -1,5 +1,5 @@
 import { ErrorBase } from './base';
-import { ErrorType } from '../enum/error-type';
+import { ErrorType } from './enum/error-type';
 
 export class ApplicationError extends ErrorBase {
   constructor(message = 'Code execution failed', name = 'Application') {

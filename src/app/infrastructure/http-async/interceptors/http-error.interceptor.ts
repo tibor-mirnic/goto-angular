@@ -10,15 +10,11 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { ErrorBase, AuthenticationError, AuthorizationError, ConnectionError, BadRequestError,
+  InternalServerError, ApplicationError, ConflictError, ForbiddenError, NotFoundError,
+  RequestTimeoutError } from '@modules/errors';
+
 import { REFRESH_ACCESS_TOKEN } from '../models/http-headers';
-import { ErrorBase } from '../models/errors/base';
-import { AuthenticationError, AuthorizationError, ConnectionError } from '../models/errors/auth';
-import { BadRequestError } from '../models/errors/user-friendly';
-import { InternalServerError, ApplicationError } from '../models/errors/application';
-import { ConflictError } from '../models/errors/conflict';
-import { ForbiddenError } from '../models/errors/forbidden';
-import { NotFoundError } from '../models/errors/not-found';
-import { RequestTimeoutError } from '../models/errors/request-timeout';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
