@@ -53,6 +53,6 @@ A portion of the file
 ```
 "paths": {
   "@environment": ["src/environments/environment"],
-  "@modules/*": ["src/app/modules/*"]
+  "@modules/*": ["src/app/infrastructure/*", "src/app/modules/*"]
 }
 ```
