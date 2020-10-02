@@ -1,8 +1,11 @@
-@import "widget";
+@use "base" as *;
+@use "widget" as *;
 
-@import "./components/forms/cui-text-box.component";
+@use "./components/forms/cui-text-box.component" as *;
+
+@forward "spacer";
 
 @mixin load() {
-  @include -cui-widget();
-  @include -cui-text-box();
+  @include cui-widget();
+  @include cui-text-box();
 }

@@ -1,0 +1,15 @@
+@mixin cui-spacer($prefix: "cui", $space: 8px) {
+  #{$prefix} {
+    &-spacer {
+      &-v {
+        height: $space;
+        width: 100%;
+      }
+
+      &-h {
+        width: $space;
+        height: 100%;
+      }
+    }
+  }
+}

@@ -28,10 +28,25 @@ To support theming, each file, which is a module itself, should be defined as a 
 `scss/components/_fm-simple.component.scss`
 
 ```
-@mixin -fm-simple($background-color) {
+@mixin fm-simple($background-color) {
   .fm-simple {
     background-color: $background-color;
   }
+}
+```
+
+With `@forward` you can expose anything that is public in the inner `sass` module.
+```
+@use "base" as *;
+@use "widget" as *;
+
+@use "./components/forms/cui-text-box.component" as *;
+
+@forward "spacer";
+
+@mixin load() {
+  @include cui-widget();
+  @include cui-text-box();
 }
 ```
 
@@ -40,12 +55,39 @@ To support theming, each file, which is a module itself, should be defined as a 
 In here we declare everything that is public for this module. Every `_index.scss` file should have a `load` mixin.
 
 ```
-@import "components/fm-simple.component";
+@use "components/fm-simple.component" as *;
 
 @mixin load(
   $background-color: red,
   $border-color: yellow
 ) {
-  @include -fm-simple($background-color: $background-color);
+  @include fm-simple($background-color: $background-color);
+}
+```
+
+## Style Preprocessor Paths
+
+To avoid defining relative paths when importing `sass` modules we can add paths to `angular.json` at `arhitect:build:options:stylePreprocessorOptions`.
+
+Be sure to add them to `arhitect:test:options:stylePreprocessorOptions` as well.
+
+```
+"stylePreprocessorOptions": {
+  "includePaths": [
+    "src/app/modules/"
+  ]
+},
+```
+
+This way we can import anything public from a `sass` module anywhere in the application.
+```
+@use "core-ui/scss/" as cuiModule;
+
+@mixin fm-simple($background-color) {
+  .fm-simple {
+    background-color: $background-color;
+  }
+
+  @include cuiModule.cui-spacer(".fm-simple");
 }
 ```

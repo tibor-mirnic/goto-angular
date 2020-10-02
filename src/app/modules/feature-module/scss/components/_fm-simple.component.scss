@@ -1,5 +1,9 @@
-@mixin -fm-simple($background-color) {
+@use "core-ui/scss/" as cuiModule;
+
+@mixin fm-simple($background-color) {
   .fm-simple {
     background-color: $background-color;
   }
+
+  @include cuiModule.cui-spacer(".fm-simple");
 }
