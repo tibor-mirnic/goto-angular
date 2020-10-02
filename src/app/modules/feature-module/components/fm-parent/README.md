@@ -31,7 +31,7 @@ export interface IContextEvent<T, E> {
 
 ## Context Class
 
-There is an abstract [Context](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/modules/core-ui/util/context.ts) class, located in the `core-ui` module, that you implement based on your needs.
+There is an abstract [Context](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/infrastructure/core-ui/util/context.ts) class, located in the `core-ui` module, that you implement based on your needs.
 
 #### Methods
 

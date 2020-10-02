@@ -1,6 +1,6 @@
-## Modules
+## Feature Modules
 
-All of the modules are located in `src/app/modules` folder.
+All of the feature modules are located in `src/app/modules` folder.
 
 Components, services, directives, etc that belong to a module should have a prefix, for example component in `feature-module` has `fm` prefix.
 
@@ -15,9 +15,6 @@ Feature modules can either be `eager` or `lazy`. If they are `eager` they should
 
 #### Shared Modules
 Shared modules contain logic that is shared between feature modules. An example would be when we need to use the api of some other module, in that case we can create an abstract `shered` service, implement it in a feature module and provide it in the `root` module.
-
-#### Core modules
-Core modules are technical modules. They contain styles, components, utilities, services that are of general use.
 
 ## Structure
 

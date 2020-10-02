@@ -74,9 +74,10 @@ Be sure to add them to `arhitect:test:options:stylePreprocessorOptions` as well.
 ```
 "stylePreprocessorOptions": {
   "includePaths": [
-    "src/app/modules/"
+    "src/app/modules/",
+    "src/app/infrastructure"
   ]
-},
+}
 ```
 
 This way we can import anything public from a `sass` module anywhere in the application.
