@@ -19,6 +19,7 @@ Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The 
         1. [View](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/modules/feature-module/components/fm-complex/README.md)
         2. [Context](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/modules/feature-module/components/fm-parent/README.md)
     2. [Models](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/modules/feature-module/models/README.md)
+    3. [Styles](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/modules/feature-module/scss/README.md)
 
 5. [Infrastructure](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/infrastructure/README.md)
     1. [Core UI](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/infrastructure/core-ui/README.md)
