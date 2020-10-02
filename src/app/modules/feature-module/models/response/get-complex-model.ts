@@ -1,6 +1,5 @@
-import { ComplexModelStatus } from "../enums/complex-model-status";
-import { IComplexModel } from "../complex-model";
+import { IComplexModel } from '../components/complex-model';
 
 export interface IGetComplexModelResponse {
-  model: IComplexModel
+  model: IComplexModel;
 }

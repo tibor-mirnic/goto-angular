@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Context, timeout } from '@modules/core-ui';
 
-import { IFmParentModel } from '../../models/fm-parent';
+import { IFmParentModel } from '../../models/components/fm-parent';
 import { FmParentContextEvent } from '../../models/enums/fm-parent/fm-parent-context-event';
 import { FmParentContextCommand } from '../../models/enums/fm-parent/fm-parent-context-command';
 

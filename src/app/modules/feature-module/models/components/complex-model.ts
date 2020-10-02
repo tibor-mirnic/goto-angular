@@ -1,4 +1,4 @@
-import { ComplexModelStatus } from './enums/complex-model-status';
+import { ComplexModelStatus } from '../enums/complex-model-status';
 
 interface IComplexModelItem {
   id: number;

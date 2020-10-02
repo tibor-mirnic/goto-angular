@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IComplexModel } from '../../models/complex-model';
+import { IComplexModel } from '../../models/components/complex-model';
 import { ComplexModelStatus } from '@modules/feature-module/models/enums/complex-model-status';
 
 import { ComplexModelStatusDescription } from '../../models/enums/complex-model-status';
