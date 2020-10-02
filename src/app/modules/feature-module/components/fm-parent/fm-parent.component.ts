@@ -16,7 +16,7 @@ export class FmParentComponent implements OnInit {
   @HostBinding('class')
   private _baseClass = 'fm-parent cui-widget';
 
-  public isLoading: boolean;
+  isLoading: boolean;
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,

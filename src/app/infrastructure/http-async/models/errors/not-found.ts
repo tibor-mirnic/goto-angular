@@ -1,5 +1,4 @@
-import { ErrorBase } from './base';
-import { ErrorType } from './enum/error-type';
+import { ErrorBase, ErrorType } from '@modules/errors';
 
 export class NotFoundError extends ErrorBase {
   constructor(message = 'Required resource is not found', name = 'Not Found') {

@@ -10,10 +10,10 @@ import { ErrorType } from '../models/enum/error-type';
 })
 export class ErrorService {
 
-  public didUserFriendlyErrorOccured: Subject<ErrorBase>;
-  public didAuthenticationErrorOccured: Subject<ErrorBase>;
-  public didConflictErrorOccured: Subject<ErrorBase>;
-  public didUnexpectedErrorOccured: Subject<Error>;
+  didUserFriendlyErrorOccured: Subject<ErrorBase>;
+  didAuthenticationErrorOccured: Subject<ErrorBase>;
+  didConflictErrorOccured: Subject<ErrorBase>;
+  didUnexpectedErrorOccured: Subject<Error>;
 
   constructor() {
     this.didUserFriendlyErrorOccured = new Subject<ErrorBase>();
@@ -22,7 +22,7 @@ export class ErrorService {
     this.didUnexpectedErrorOccured = new Subject<Error>();
   }
 
-  public handleError(
+  handleError(
     error: ErrorBase,
     processError: (error: ErrorBase) => void = null
   ): void {

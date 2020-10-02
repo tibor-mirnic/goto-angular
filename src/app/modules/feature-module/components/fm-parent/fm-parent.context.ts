@@ -9,7 +9,7 @@ import { FmParentContextCommand } from '../../models/enums/fm-parent/fm-parent-c
 @Injectable()
 export class FmParentContext extends Context<IFmParentModel, FmParentContextEvent, FmParentContextCommand> {
 
-  public async getModel(): Promise<IFmParentModel> {
+  async getModel(): Promise<IFmParentModel> {
     try {
 
       await timeout(1000);
@@ -31,7 +31,7 @@ export class FmParentContext extends Context<IFmParentModel, FmParentContextEven
     }
   }
 
-  public updateChildOne(): void {
+  updateChildOne(): void {
     this.updateModel(
       FmParentContextEvent.CHILD_ONE_UPDATED,
       model => ({
@@ -44,7 +44,7 @@ export class FmParentContext extends Context<IFmParentModel, FmParentContextEven
     );
   }
 
-  public updateChildTwo(name: string): void {
+  updateChildTwo(name: string): void {
     this.updateModel(
       FmParentContextEvent.CHILD_TWO_UPDATED,
       model => ({
@@ -57,7 +57,7 @@ export class FmParentContext extends Context<IFmParentModel, FmParentContextEven
     );
   }
 
-  public refreshChildTwo(): void {
+  refreshChildTwo(): void {
     this.executeCommand(FmParentContextCommand.REFRESH_CHILD_TWO);
   }
 }

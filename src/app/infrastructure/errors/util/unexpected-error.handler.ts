@@ -1,7 +1,8 @@
-import { ErrorHandler, Injector, Inject } from '@angular/core';
+import { ErrorHandler, Injector, Inject, Injectable } from '@angular/core';
 
 import { ErrorService } from '../../errors/services/error-service';
 
+@Injectable()
 export class LvUnexpectedErrorHandler implements ErrorHandler {
 
   constructor(

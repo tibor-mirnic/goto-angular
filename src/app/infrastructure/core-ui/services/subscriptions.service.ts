@@ -10,15 +10,15 @@ export class SubscriptionsService implements OnDestroy {
     this._subscriptions = [];
   }
 
-  public add(s: Subscription): void {
+  add(s: Subscription): void {
     this._subscriptions.push(s);
   }
 
-  public addMany(sbs: Subscription[]): void {
+  addMany(sbs: Subscription[]): void {
     this._subscriptions.push(...sbs);
   }
 
-  public ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this._subscriptions.forEach(a => a.unsubscribe());
   }
 }

@@ -1,5 +1,6 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { HTTP_ASYNC_CONFIG } from './models/tokens';
 import { IHttpAsyncConfig } from './models/http-async-config';
@@ -8,7 +9,9 @@ import { HttpAuthorizationInterceptor } from './interceptors/http-authorization.
 import { HttpHeadersInterceptor } from './interceptors/http-headers.interceptor';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 
-@NgModule()
+@NgModule({
+  imports: [ HttpClientModule ]
+})
 export class HttpAsyncModule {
 
   constructor(
@@ -19,7 +22,7 @@ export class HttpAsyncModule {
     }
   }
 
-  public static forRoot(config: IHttpAsyncConfig): ModuleWithProviders<HttpAsyncModule> {
+  static forRoot(config: IHttpAsyncConfig): ModuleWithProviders<HttpAsyncModule> {
     return {
       ngModule: HttpAsyncModule,
       providers: [{

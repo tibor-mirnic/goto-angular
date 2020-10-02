@@ -13,15 +13,15 @@ export abstract class Context<T, E extends typeof EnumType, C extends typeof Enu
   private _onEvent: Subject<IContextEvent<T, E | ContextEvent>>;
   private _onCommand: Subject<C | ContextCommand>;
 
-  public get isLoading(): Observable<boolean> {
+  get isLoading(): Observable<boolean> {
     return this._isLoading.asObservable();
   }
 
-  public get onEvent(): Observable<IContextEvent<T, E | ContextEvent>> {
+  get onEvent(): Observable<IContextEvent<T, E | ContextEvent>> {
     return this._onEvent.asObservable();
   }
 
-  public get onCommand(): Observable<C | ContextCommand> {
+  get onCommand(): Observable<C | ContextCommand> {
     return this._onCommand.asObservable();
   }
 
@@ -33,7 +33,7 @@ export abstract class Context<T, E extends typeof EnumType, C extends typeof Enu
     this._onCommand = new Subject<C>();
   }
 
-  public async init(): Promise<void> {
+  async init(): Promise<void> {
     try {
       this.setIsLoading(true);
 

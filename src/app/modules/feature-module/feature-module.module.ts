@@ -33,7 +33,7 @@ export class FeatureModuleModule {
     }
   }
 
-  public static forRoot(apiUrl: string): ModuleWithProviders<FeatureModuleModule> {
+  static forRoot(apiUrl: string): ModuleWithProviders<FeatureModuleModule> {
     return {
       ngModule: FeatureModuleModule,
       providers: [{

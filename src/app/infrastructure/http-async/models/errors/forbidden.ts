@@ -1,5 +1,4 @@
-import { ErrorBase } from './base';
-import { ErrorType } from './enum/error-type';
+import { ErrorBase, ErrorType } from '@modules/errors';
 
 export class ForbiddenError extends ErrorBase {
   constructor(message = 'You are not permitted to use this resource', name = 'Forbidden') {

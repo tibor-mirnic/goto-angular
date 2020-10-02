@@ -1,5 +1,4 @@
-import { ErrorBase } from './base';
-import { ErrorType } from './enum/error-type';
+import { ErrorBase, ErrorType } from '@modules/errors';
 
 export class AuthorizationError extends ErrorBase {
   constructor(message = 'Unauthorized access', name = 'Authorization') {

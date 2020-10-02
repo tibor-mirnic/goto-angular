@@ -2,7 +2,7 @@
 
 All of the feature modules are located in `src/app/modules` folder.
 
-Components, services, directives, etc that belong to a module should have a prefix, for example component in `feature-module` has `fm` prefix.
+Components, directives, etc that belong to a module should have a prefix, for example component in `feature-module` has `fm` prefix.
 
 There are basicly three types of modules
 

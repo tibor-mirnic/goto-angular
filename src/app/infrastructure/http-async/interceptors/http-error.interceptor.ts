@@ -4,17 +4,21 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { ErrorBase, AuthenticationError, AuthorizationError, ConnectionError, BadRequestError,
-  InternalServerError, ApplicationError, ConflictError, ForbiddenError, NotFoundError,
-  RequestTimeoutError } from '@modules/errors';
+import { ErrorBase, ApplicationError } from '@modules/errors';
 
-import { REFRESH_ACCESS_TOKEN } from '../models/http-headers';
+import { AuthorizationError, ConnectionError } from '../models/errors/auth';
+import { BadRequestError } from '../models/errors/bad-request';
+import { ConflictError } from '../models/errors/conflict';
+import { ForbiddenError } from '../models/errors/forbidden';
+import { InternalServerError } from '../models/errors/internal-server';
+import { NotFoundError } from '../models/errors/not-found';
+import { RequestTimeoutError, GatewayTimeoutError } from '../models/errors/request-timeout';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -22,18 +26,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const refreshAccessTokenHeader = request.headers.get(REFRESH_ACCESS_TOKEN);
-    const isAccessTokenRefreshing = refreshAccessTokenHeader === 'true';
-    const cloned = request.clone({
-      headers: request.headers.delete(REFRESH_ACCESS_TOKEN)
-    });
-
     return next
-      .handle(cloned)
+      .handle(request)
       .pipe(
-        catchError(error => {
+        catchError((error: HttpErrorResponse) => {
           let message = null;
-          let er: ErrorBase = null;
 
           if (error.error) {
             message = error.error.message;
@@ -43,11 +40,9 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             message = error.message;
           }
 
-          if (error.status === 400) {
-            if (isAccessTokenRefreshing) {
-              return throwError(new AuthenticationError());
-            }
+          let er: ErrorBase = null;
 
+          if (error.status === 400) {
             er = new BadRequestError(message);
           }
 
@@ -80,7 +75,13 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             er = new ConnectionError(message);
           }
 
-          er = new ApplicationError(error.message);
+          if (error.status === 504) {
+            er = new GatewayTimeoutError(message);
+          }
+
+          if (!er) {
+            er = new ApplicationError(error.message);
+          }
 
           return throwError(er);
         })

@@ -12,7 +12,7 @@ export class ErrorsModule {
     }
   }
 
-  public static forRoot(): ModuleWithProviders<ErrorsModule> {
+  static forRoot(): ModuleWithProviders<ErrorsModule> {
     return {
       ngModule: ErrorsModule,
       providers: [{

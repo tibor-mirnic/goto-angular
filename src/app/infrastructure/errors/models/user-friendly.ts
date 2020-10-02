@@ -7,12 +7,6 @@ export class UserFriendlyError extends ErrorBase {
   }
 }
 
-export class BadRequestError extends UserFriendlyError {
-  constructor(message = 'Bad Request. Please check your parameters') {
-    super(message, 'Bad Request');
-  }
-}
-
 export class NotImplementedError extends UserFriendlyError {
   constructor(message = 'This feature is not implemented') {
     super(message, 'Not Implemented');

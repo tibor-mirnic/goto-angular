@@ -7,12 +7,6 @@ export class ApplicationError extends ErrorBase {
   }
 }
 
-export class InternalServerError extends ApplicationError {
-  constructor(message = 'Oops, there was an error', name = 'Internal Server') {
-    super(message, name);
-  }
-}
-
 export class MissingArgumentsError extends ApplicationError {
   constructor(message = 'Missing arguments') {
     super(message, 'Missing Arguments');

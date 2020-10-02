@@ -23,8 +23,31 @@ import { FeatureModuleModule } from '@modules/feature-module';
     FormsModule,
 
     // Modules
-    ErrorsModule,
-    HttpAsyncModule,
+    ErrorsModule.forRoot(),
+    HttpAsyncModule.forRoot({
+      applicationId: 'goto-angular',
+      defaultTimeout: 5 * 1000,
+      accessTokenFactory: async httpClientAsync => {
+        try {
+          await new Promise(resolve => {
+            setTimeout(() => resolve('accessToken'), 200);
+          });
+          const token: string = await httpClientAsync
+            .getAsync({
+              resourcePath: '/api/token/refresh',
+              queryParams: {
+                refreshToken: 'refreshToken'
+              },
+              skipAuthorization: true
+            });
+
+          return token;
+        }
+        catch (error) {
+          throw error;
+        }
+      }
+    }),
     CoreUIModule,
     SharedModule,
     FeatureModuleModule.forRoot(environment.apiUrl),

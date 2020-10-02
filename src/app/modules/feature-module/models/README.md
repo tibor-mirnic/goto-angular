@@ -17,6 +17,7 @@ models/
     get-users.ts
     save-user.ts
   some-model.ts
+  errors.ts
   tokens.ts
 ```
 File name convention is the same as one defined by `@angular/cli`.
@@ -71,6 +72,10 @@ export enum UserTypeDescription {
   USER = 'Simple user`
 }
 ```
+
+## Errors
+
+Every module should have at least one error. This way you can have more granular messages presented to user.
 
 ## Tokens
 

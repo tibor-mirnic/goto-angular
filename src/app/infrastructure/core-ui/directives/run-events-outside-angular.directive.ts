@@ -10,8 +10,7 @@ export class RunEventsOutsideAngularDirective implements OnInit, OnDestroy {
 
   private _listeners: EmptyCallback[];
 
-  @Input('cuiRunEventsOutsideAngular')
-  public events: IRunOutsideAngularEvent[];
+  @Input('cuiRunEventsOutsideAngular') events: IRunOutsideAngularEvent[];
 
   constructor(
     private _ngZone: NgZone,

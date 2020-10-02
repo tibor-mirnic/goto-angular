@@ -236,14 +236,14 @@ Add every component prefix to both `component-selector` and `directive-selector`
 "directive-selector": [
   true,
   "attribute",
-  ["app", "fm", ...etc],
+  ["app", "fm", "cui", ...etc],
   "camelCase"
 ],
 
 "component-selector": [
   true,
   "element",
-  ["app", "fm", ...etc],
+  ["app", "fm", "cui", ...etc],
   "kebab-case"
 ],
 ```

@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { IComplexModel } from '../../models/components/complex-model';
-import { ComplexModelStatus } from '@modules/feature-module/models/enums/complex-model-status';
 
-import { ComplexModelStatusDescription } from '../../models/enums/complex-model-status';
 import { DropdownEnum } from '@modules/core-ui';
+
+import { ComplexModelService } from '../../services/complex-model.service';
+import { IComplexModel } from '../../models/components/complex-model';
+import { ComplexModelStatus } from '../../models/enums/complex-model-status';
+import { ComplexModelStatusDescription } from '../../models/enums/complex-model-status';
 
 @Injectable()
 export class FmComplexView {
@@ -13,7 +15,9 @@ export class FmComplexView {
   complexModelStatusDropdown: DropdownEnum;
   complexModelStatusDescription = ComplexModelStatusDescription;
 
-  constructor() {
+  constructor(
+    private _service: ComplexModelService
+  ) {
     this.model = {
       name: 'Complex Model',
       description: 'Model that cannot be directly mapped to HTML template',
@@ -28,7 +32,20 @@ export class FmComplexView {
     this.complexModelStatusDropdown = new DropdownEnum(ComplexModelStatusDescription);
   }
 
-  public changeStatus(): void {
+  async loadModel(): Promise<void> {
+    try {
+      const response = await this._service.getComplexModel({
+        status: ComplexModelStatus.ACTIVE
+      });
+
+      this.model = response.model;
+    }
+    catch (error) {
+      throw error;
+    }
+  }
+
+  changeStatus(): void {
     let newStatus: ComplexModelStatus = ComplexModelStatus.ACTIVE;
     if (this.model.status === ComplexModelStatus.ACTIVE) {
       newStatus = ComplexModelStatus.INACTIVE;
@@ -37,7 +54,7 @@ export class FmComplexView {
     this.model.status = newStatus;
   }
 
-  public deleteItem(id: number): void {
+  deleteItem(id: number): void {
     this.model.items = this.model.items.filter(a => a.id !== id);
   }
 }

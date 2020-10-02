@@ -37,7 +37,7 @@ There is an abstract [Context](https://github.com/tibor-mirnic/goto-angular/blob
 
 There are several `protected` methods available
 ```
-public async init(): Promise<void> { ... }
+async init(): Promise<void> { ... }
 
 protected updateModel(
   event: E | ContextEvent,
