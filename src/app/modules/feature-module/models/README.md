@@ -75,7 +75,15 @@ export enum UserTypeDescription {
 
 ## Errors
 
-Every module should have at least one error. This way you can have more granular messages presented to user.
+Every module should have at least one error. This way you can have more granular messages presented to the user.
+
+```
+export class FeatureModuleError extends UserFriendlyError {
+  constructor(message: string) {
+    super(message, 'Feature Module');
+  }
+}
+```
 
 ## Tokens
 

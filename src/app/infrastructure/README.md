@@ -6,7 +6,7 @@ Modules defined here can be used in any of the feature modules.
 
 All technical modules should be imported in the root `App` module.
 
-As for `core-ui` it can be imported also in the `feature` modules because it contains components, directives and other ui related things.
+As for `core-ui` it can also be imported in the `feature` modules because it contains components, directives and other ui related things.
 
 ```
 @NgModule({

@@ -2,9 +2,7 @@
 
 Here we define all base error types, they can be found in `models` folder.
 
-Also we have defined an [ErrorService](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/infrastructure/errors/services/error-service.ts) which is responsible for processing errors.
-
-And we have a global [UnexpectedErrorHandler](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/infrastructure/errors/util/unexpected-error.handler.ts).
+It is a service that is provided in the `root` module.
 
 ```
 @NgModule()
@@ -29,3 +27,13 @@ export class ErrorsModule {
   }
 }
 ```
+
+## ErrorService
+
+[ErrorService](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/infrastructure/errors/services/error-service.ts) is responsible for processing any errors that extend `ErrorBase` class.
+
+Depending on the `ErrorType` it will emit `IProcessedErrorEvent`. This event can be consumed anywhere in the application, and for example, in case of `ProcessedErrorEvent.USER` you can show an toast message to the user.
+
+## UnexpectedErrorHander
+
+[UnexpectedErrorHandler](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/infrastructure/errors/util/unexpected-error.handler.ts) is custom global `ErrorHandler`. Here you could add an logging to your backend `API`.

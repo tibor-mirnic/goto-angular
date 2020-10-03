@@ -3,23 +3,19 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 import { ErrorBase } from '../models/base';
+import { ProcessedErrorEventType } from '../models/enum/processed-error-event-type';
 import { ErrorType } from '../models/enum/error-type';
+import { IProcessedErrorEvent } from '../models/processed-error-event';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorService {
 
-  didUserFriendlyErrorOccured: Subject<ErrorBase>;
-  didAuthenticationErrorOccured: Subject<ErrorBase>;
-  didConflictErrorOccured: Subject<ErrorBase>;
-  didUnexpectedErrorOccured: Subject<Error>;
+  didProcessError: Subject<IProcessedErrorEvent>;
 
   constructor() {
-    this.didUserFriendlyErrorOccured = new Subject<ErrorBase>();
-    this.didAuthenticationErrorOccured = new Subject<ErrorBase>();
-    this.didConflictErrorOccured = new Subject<ErrorBase>();
-    this.didUnexpectedErrorOccured = new Subject<Error>();
+    this.didProcessError = new Subject<IProcessedErrorEvent>();
   }
 
   handleError(
@@ -36,7 +32,10 @@ export class ErrorService {
           processError(error);
         }
         else {
-          this.didUserFriendlyErrorOccured.next(error);
+          this.didProcessError.next({
+            type: ProcessedErrorEventType.USER,
+            error
+          });
         }
 
         break;
@@ -47,7 +46,10 @@ export class ErrorService {
           processError(error);
         }
 
-        this.didAuthenticationErrorOccured.next(error);
+        this.didProcessError.next({
+          type: ProcessedErrorEventType.SECURITY,
+          error
+        });
 
         break;
       }
@@ -56,13 +58,19 @@ export class ErrorService {
           processError(error);
         }
 
-        this.didConflictErrorOccured.next(error);
+        this.didProcessError.next({
+          type: ProcessedErrorEventType.CONFLICT,
+          error
+        });
 
         break;
       }
 
       default: {
-        this.didUnexpectedErrorOccured.next(error);
+        this.didProcessError.next({
+          type: ProcessedErrorEventType.UNEXPECTED,
+          error
+        });
         break;
       }
     }

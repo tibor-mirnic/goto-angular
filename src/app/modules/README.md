@@ -4,9 +4,6 @@ All of the feature modules are located in `src/app/modules` folder.
 
 Components, directives, etc that belong to a module should have a prefix, for example component in `feature-module` has `fm` prefix.
 
-There are basicly three types of modules
-
-#### Feature Modules
 These modules are self contained and are responsible only for their own business logic.
 
 Feature modules should contain references to other feature modules, but they can reference `shared` and `core` modules.
