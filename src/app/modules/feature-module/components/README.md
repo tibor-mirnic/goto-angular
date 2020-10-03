@@ -1,6 +1,6 @@
 ## Components
 
-Contains all components that belogn to a module.
+Contains all components that belong to a module.
 
 #### Prefix
 
