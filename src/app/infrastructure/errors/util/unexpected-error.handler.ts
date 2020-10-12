@@ -1,6 +1,7 @@
 import { ErrorHandler, Injector, Inject, Injectable } from '@angular/core';
 
 import { ErrorService } from '../../errors/services/error-service';
+import { ProcessedErrorEventType } from '../models/enum/processed-error-event-type';
 
 @Injectable()
 export class LvUnexpectedErrorHandler implements ErrorHandler {
@@ -20,7 +21,10 @@ export class LvUnexpectedErrorHandler implements ErrorHandler {
       error.name = 'Unexpected Error';
     }
 
-    errorService.didUnexpectedErrorOccured.next(error);
+    errorService.didProcessError.next({
+      type: ProcessedErrorEventType.UNEXPECTED,
+      error
+    });
     console.error(error);
   }
 }

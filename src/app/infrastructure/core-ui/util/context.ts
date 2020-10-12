@@ -41,7 +41,7 @@ export abstract class Context<T, E extends typeof EnumType, C extends typeof Enu
     try {
       this.setIsLoading(true);
 
-      this._model = await this.getModel();
+      this._model = await this.initModel();
 
       this.publishEvent(ContextEvent.INIT);
     }
@@ -69,7 +69,7 @@ export abstract class Context<T, E extends typeof EnumType, C extends typeof Enu
     this._isLoading.next(isLoading);
   }
 
-  protected abstract getModel(): Promise<T>;
+  protected abstract initModel(): Promise<T>;
 
   private publishEvent(event: E | ContextEvent): void {
     this._onEvent.next({

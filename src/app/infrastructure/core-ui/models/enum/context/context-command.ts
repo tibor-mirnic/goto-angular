@@ -1,1 +1,3 @@
-export enum ContextCommand {}
+export enum ContextCommand {
+  NOOP = 'NOOP'
+}

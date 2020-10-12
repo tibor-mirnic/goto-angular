@@ -9,7 +9,7 @@ import { FmParentContextCommand } from '../../models/enums/fm-parent/fm-parent-c
 @Injectable()
 export class FmParentContext extends Context<IFmParentModel, FmParentContextEvent, FmParentContextCommand> {
 
-  async getModel(): Promise<IFmParentModel> {
+  async initModel(): Promise<IFmParentModel> {
     try {
 
       await timeout(1000);

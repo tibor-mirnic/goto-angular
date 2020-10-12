@@ -15,6 +15,15 @@ We use `events` and `commands` to communitcate between the components.
 
 `Events` happen after we have updated the state in the `Context` and with `Commands` we invoke some action that could change the state.
 
+#### NOTE
+
+Because `enum` cannot be empty, you can add a `NOOP` as a default.
+```
+export enum ContextCommand {
+  NOOP = 'NOOP'
+}
+```
+
 ## Observables
 
 There are three `observables`
