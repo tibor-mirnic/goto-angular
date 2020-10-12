@@ -13,6 +13,10 @@ export abstract class Context<T, E extends typeof EnumType, C extends typeof Enu
   private _onEvent: Subject<IContextEvent<T, E | ContextEvent>>;
   private _onCommand: Subject<C | ContextCommand>;
 
+  get model(): T {
+    return this._model;
+  }
+
   get isLoading(): Observable<boolean> {
     return this._isLoading.asObservable();
   }
