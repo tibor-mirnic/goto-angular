@@ -27,5 +27,13 @@ Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The 
         1. [Run Events Outside Angular](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/infrastructure/core-ui/directives/README.md)
         2. [Control Value Accessor](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/infrastructure/core-ui/components/forms/cui-text-box/README.md)
         3. [Change Detection](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/infrastructure/core-ui/components/forms/cui-text-box/README.md#change-detection)
+        4. [Assets](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/infrastructure/core-ui/assets/README.md)
     2. [Http Async](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/infrastructure/http-async/README.md)
     3. [Erros](https://github.com/tibor-mirnic/goto-angular/blob/master/src/app/infrastructure/errors/README.md)
+
+## TODO
+
+1. Dockerization
+2. Directives
+3. Web Workers
+4. Caching on the cloud
