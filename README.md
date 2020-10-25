@@ -37,3 +37,4 @@ Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The 
 2. Directives
 3. Web Workers
 4. Caching on the cloud
+5. JWT Authentication
