@@ -93,7 +93,7 @@ export class HttpClientAsync {
   putAsync<T>(request: IHttpPostRequest): Promise<T> {
     const reqOpts = this.getRequestOptions(request);
     return this._httpClient
-      .post<T>(request.resourcePath, request.body, reqOpts)
+      .put<T>(request.resourcePath, request.body, reqOpts)
       .toPromise();
   }
 
