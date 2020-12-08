@@ -1,6 +1,6 @@
 import { Component, HostBinding, ViewEncapsulation, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
 
-import { ErrorService } from '@modules/errors/services/error-service';
+import { ErrorService } from '@modules/errors';
 
 import { FmComplexView } from './fm-complex.view';
 
