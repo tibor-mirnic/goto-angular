@@ -1,4 +1,4 @@
-import { HttpClientAsync } from '../services/http-client-async';
+import { HttpClientAsync } from '../services/http-client-async.service';
 
 export interface IHttpAsyncConfig {
   applicationId: string;

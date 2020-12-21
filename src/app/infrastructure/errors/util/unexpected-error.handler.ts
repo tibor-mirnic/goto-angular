@@ -1,6 +1,6 @@
 import { ErrorHandler, Injector, Inject, Injectable } from '@angular/core';
 
-import { ErrorService } from '../../errors/services/error-service';
+import { ErrorService } from '../services/error.service';
 import { ProcessedErrorEventType } from '../models/enum/processed-error-event-type';
 
 @Injectable()

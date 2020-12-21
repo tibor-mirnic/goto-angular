@@ -7,4 +7,4 @@ export * from './models/base';
 export * from './models/application';
 export * from './models/user-friendly';
 
-export * from './services/error-service';
+export * from './services/error.service';

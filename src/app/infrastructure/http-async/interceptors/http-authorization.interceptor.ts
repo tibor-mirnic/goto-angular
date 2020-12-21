@@ -15,7 +15,7 @@ import { ErrorBase } from '@modules/errors';
 import { HTTP_ASYNC_CONFIG } from '../models/tokens';
 import { IHttpAsyncConfig } from '../models/http-async-config';
 import { AUTHORIZATION, SKIP_AUTHORIZATION } from '../models/http-headers';
-import { HttpClientAsync } from '../services/http-client-async';
+import { HttpClientAsync } from '../services/http-client-async.service';
 import { AuthenticationError, ConnectionError } from '../models/errors/auth';
 
 @Injectable()

@@ -1,8 +1,8 @@
-import { discardPeriodicTasks, fakeAsync, flush, flushMicrotasks, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { HttpAsyncModule } from '../http-async.module';
-import { HttpClientAsync } from '../services/http-client-async';
+import { HttpClientAsync } from '../services/http-client-async.service';
 
 describe('HttpAsyncModule', () => {
   let controller: HttpTestingController;
