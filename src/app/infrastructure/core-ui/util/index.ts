@@ -6,7 +6,7 @@ export const implementsInterface = <T>(
 };
 
 export const timeout = async (ms = 0): Promise<any> => {
-  return new Promise(resolve => setTimeout(() => resolve(), ms));
+  return new Promise<void>(resolve => setTimeout(() => resolve(), ms));
 };
 
 // param key {String}
@@ -30,22 +30,6 @@ export const sortBy = (
   };
 
   return compareFunction;
-};
-
-export const toDictionary = <T>(
-  array: T[],
-  field: string,
-  isSimple = false
-): { [field: string]: T } => {
-  return array.reduce((acc: any, current: T, index: number) => {
-    if (isSimple) {
-      acc[current] = true;
-    } else {
-      acc[current[field]] = current;
-    }
-
-    return acc;
-  }, {});
 };
 
 export const clone = <T>(
