@@ -11,6 +11,7 @@ export * from './util/dropdown-enum';
 export * from './util/context';
 export * from './util/angular';
 export * from './util/dictionary';
+export * from './util/math';
 
 export * from './services/subscriptions.service';
 
