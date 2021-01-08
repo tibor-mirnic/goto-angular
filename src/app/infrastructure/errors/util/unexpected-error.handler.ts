@@ -4,7 +4,7 @@ import { ErrorService } from '../services/error.service';
 import { ProcessedErrorEventType } from '../models/enum/processed-error-event-type';
 
 @Injectable()
-export class LvUnexpectedErrorHandler implements ErrorHandler {
+export class UnexpectedErrorHandler implements ErrorHandler {
 
   constructor(
     @Inject(Injector) private injector: Injector

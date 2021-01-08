@@ -21,7 +21,7 @@ export class ErrorsModule {
       ngModule: ErrorsModule,
       providers: [{
         provide: ErrorHandler,
-        useClass: LvUnexpectedErrorHandler
+        useClass: UnexpectedErrorHandler
       }]
     };
   }

@@ -1,5 +1,5 @@
 import { ErrorHandler, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
-import { LvUnexpectedErrorHandler } from './util/unexpected-error.handler';
+import { UnexpectedErrorHandler } from './util/unexpected-error.handler';
 
 @NgModule()
 export class ErrorsModule {
@@ -17,7 +17,7 @@ export class ErrorsModule {
       ngModule: ErrorsModule,
       providers: [{
         provide: ErrorHandler,
-        useClass: LvUnexpectedErrorHandler
+        useClass: UnexpectedErrorHandler
       }]
     };
   }
