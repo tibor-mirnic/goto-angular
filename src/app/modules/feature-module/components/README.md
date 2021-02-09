@@ -216,34 +216,125 @@ export class ComplexPanelComponent {
 
 ```
 
-## tslint
+## eslint
 
-Add `allow-leading-underscore` to `variable-name` to allow `underscore` for private fields.
+As of Angular 11 `tslint` is deprecated in favor of `eslint`.
 
+You can either update current project or create new with `eslint` configuration. More details can be found [here](https://github.com/angular-eslint/angular-eslint).
+
+Add every component prefix to both `@angular-eslint/component-selector` and `@angular-eslint/directive-selector`
 ```
-"variable-name": {
-  "options": [
-    "ban-keywords",
-    "check-format",
-    "allow-pascal-case",
-    "allow-leading-underscore"
-  ]
+"@angular-eslint/component-selector": [
+  "error",
+  {
+    "type": "element",
+    "prefix": [
+      "app",
+      "fm",
+      "cui"
+    ],
+    "style": "kebab-case"
+  }
+]
+
+"@angular-eslint/directive-selector": [
+  "error",
+  {
+    "type": "attribute",
+    "prefix": [
+      "app",
+      "fm",
+      "cui"
+    ],
+    "style": "camelCase"
+  }
+]
+```
+
+Add this configuration to monitor order of class members
+```
+"@typescript-eslint/member-ordering": [
+  "error",
+  {
+    "default": [
+      "private-static-field",
+      "private-decorated-field",
+      "private-instance-field",
+      "private-abstract-field",
+
+      "public-static-field",
+      "public-decorated-field",
+      "public-instance-field",
+      "public-abstract-field",
+
+      "protected-static-field",
+      "protected-decorated-field",
+      "protected-instance-field",
+      "protected-abstract-field",
+      "protected-field",
+
+      "public-constructor",
+      
+      "public-static-method",
+      "public-decorated-method",
+      "public-instance-method",
+      "public-abstract-method",
+
+      "protected-static-method",
+      "protected-decorated-method",
+      "protected-instance-method",
+      "protected-abstract-method",
+
+      "private-static-method",
+      "private-decorated-method",
+      "private-instance-method",
+      "private-abstract-method"
+    ]
+  }
+]
+```
+
+Add `enumMember` override to `@typescript-eslint/naming-convention` to enable `UPPER_CASE` enum memebers.
+```
+"@typescript-eslint/naming-convention": [
+  "error",
+  {
+    "selector": "enumMember",
+    "format": ["UPPER_CASE"]
+  }
+]
+```
+
+To require `_` for private fields add
+```
+{
+  "selector": "memberLike",
+  "modifiers": ["private"],
+  "format": ["camelCase"],
+  "leadingUnderscore": "require"
 },
+{
+  "selector": "method",
+  "modifiers": ["private"],
+  "format": ["camelCase"],
+  "leadingUnderscore": "forbid"
+}
 ```
 
-Add every component prefix to both `component-selector` and `directive-selector`
-```
-"directive-selector": [
-  true,
-  "attribute",
-  ["app", "fm", "cui", ...etc],
-  "camelCase"
-],
 
-"component-selector": [
-  true,
-  "element",
-  ["app", "fm", "cui", ...etc],
-  "kebab-case"
-],
+Add `allowAfterThis` override to `no-underscore-dangle` to 
+enable `_` in member names.
+```
+"no-underscore-dangle": [
+  "error",
+  {
+    "allowAfterThis": true
+  }
+]
+```
+
+To prevent `no-shadow` bug add
+```
+"no-shadow": "off",
+"@typescript-eslint/no-shadow": ["error"]
 ```

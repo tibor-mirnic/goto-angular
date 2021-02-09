@@ -46,7 +46,7 @@ export class CuiTextBoxComponent implements ControlValueAccessor, Validator, OnI
 
   private get _invalid(): boolean {
     const isInvalid = this._control && this._control.invalid;
-    const isSubmitted = (this.parentFormGroup && this.parentFormGroup.submitted) || (this.parentForm && this.parentForm.submitted);
+    const isSubmitted = (this._parentFormGroup && this._parentFormGroup.submitted) || (this._parentForm && this._parentForm.submitted);
 
     return !!(isInvalid && (this._touched || isSubmitted));
   }
@@ -102,8 +102,8 @@ export class CuiTextBoxComponent implements ControlValueAccessor, Validator, OnI
     private _changeDetectorRef: ChangeDetectorRef,
     private _injector: Injector,
     private _ngZone: NgZone,
-    @Optional() private parentForm: NgForm,
-    @Optional() private parentFormGroup: FormGroupDirective
+    @Optional() private _parentForm: NgForm,
+    @Optional() private _parentFormGroup: FormGroupDirective
   ) {
     this._focused = false;
     this._suppressBlur = false;

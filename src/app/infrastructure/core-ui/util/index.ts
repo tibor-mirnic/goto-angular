@@ -1,13 +1,9 @@
 export const implementsInterface = <T>(
   obj: any,
   functionName: string
-): obj is T => {
-  return (obj as T)[functionName] !== undefined;
-};
+): obj is T => (obj as T)[functionName] !== undefined;
 
-export const timeout = async (ms = 0): Promise<any> => {
-  return new Promise<void>(resolve => setTimeout(() => resolve(), ms));
-};
+export const timeout = async (ms = 0): Promise<any> => new Promise<void>(resolve => setTimeout(() => resolve(), ms));
 
 // param key {String}
 // param reverse {Boolean} OrderByDescending
@@ -17,9 +13,7 @@ export const sortBy = (
   reverse: boolean,
   primer?: (value: any) => any
 ): any => {
-  const prime = (value: any): any => {
-    return primer ? primer(value[key]) : value[key];
-  };
+  const prime = (value: any): any => primer ? primer(value[key]) : value[key];
 
   const compareFunction: (a: any, b: any) => number = (a, b) => {
     const primeA = prime(a) || '';
@@ -71,8 +65,7 @@ export const jsonParse = <T>(parsed: string): T | null => {
   return asObject;
 };
 
-export const convertToBase64 = (b: Blob): Promise<string> => {
-  return new Promise((resolve, reject) => {
+export const convertToBase64 = (b: Blob): Promise<string> => new Promise((resolve, reject) => {
     const fr = new FileReader();
 
     fr.onloadend = () => {
@@ -86,8 +79,5 @@ export const convertToBase64 = (b: Blob): Promise<string> => {
 
     fr.readAsDataURL(b);
   });
-};
 
-export const cloneClass = <T>(obj: T): T => {
-  return Object.assign(Object.create(Object.getPrototypeOf(obj)), obj);
-};
+export const cloneClass = <T>(obj: T): T => Object.assign(Object.create(Object.getPrototypeOf(obj)), obj);

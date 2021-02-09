@@ -1,0 +1,126 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json",
+          "e2e/tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ],
+      "rules": {
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": [
+              "app",
+              "fm",
+              "cui"
+            ],
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": [
+              "app",
+              "fm",
+              "cui"
+            ],
+            "style": "camelCase"
+          }
+        ],
+        "@typescript-eslint/member-ordering": [
+          "error",
+          {
+            "default": [
+              "private-static-field",
+              "private-decorated-field",
+              "private-instance-field",
+              "private-abstract-field",
+
+              "public-static-field",
+              "public-decorated-field",
+              "public-instance-field",
+              "public-abstract-field",
+
+              "protected-static-field",
+              "protected-decorated-field",
+              "protected-instance-field",
+              "protected-abstract-field",
+              "protected-field",
+
+              "public-constructor",
+              
+              "public-static-method",
+              "public-decorated-method",
+              "public-instance-method",
+              "public-abstract-method",
+
+              "protected-static-method",
+              "protected-decorated-method",
+              "protected-instance-method",
+              "protected-abstract-method",
+
+              "private-static-method",
+              "private-decorated-method",
+              "private-instance-method",
+              "private-abstract-method"
+            ]
+          }
+        ],
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "enumMember",
+            "format": ["UPPER_CASE"]
+          },
+          {
+            "selector": "memberLike",
+            "modifiers": ["private"],
+            "format": ["camelCase"],
+            "leadingUnderscore": "require"
+          },
+          {
+            "selector": "method",
+            "modifiers": ["private"],
+            "format": ["camelCase"],
+            "leadingUnderscore": "forbid"
+          }
+        ],
+        "no-underscore-dangle": [
+          "error",
+          {
+            "allowAfterThis": true
+          }
+        ],
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": ["error"]
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {}
+    }
+  ]
+}
