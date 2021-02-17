@@ -262,16 +262,16 @@ Add this configuration to monitor order of class members
       "private-instance-field",
       "private-abstract-field",
 
-      "public-static-field",
-      "public-decorated-field",
-      "public-instance-field",
-      "public-abstract-field",
-
       "protected-static-field",
       "protected-decorated-field",
       "protected-instance-field",
       "protected-abstract-field",
       "protected-field",
+
+      "public-static-field",
+      "public-decorated-field",
+      "public-instance-field",
+      "public-abstract-field",
 
       "public-constructor",
       
@@ -337,4 +337,16 @@ To prevent `no-shadow` bug add
 ```
 "no-shadow": "off",
 "@typescript-eslint/no-shadow": ["error"]
+```
+
+To allow `no-unused-expressions` add
+```
+"no-unused-expressions": "off",
+"@typescript-eslint/no-unused-expressions": [
+  "error",
+  {
+    "allowShortCircuit": true,
+    "allowTernary": true
+  }
+]
 ```

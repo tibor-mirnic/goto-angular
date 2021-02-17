@@ -28,7 +28,8 @@
             "prefix": [
               "app",
               "fm",
-              "cui"
+              "cui",
+              "er"
             ],
             "style": "kebab-case"
           }
@@ -40,7 +41,8 @@
             "prefix": [
               "app",
               "fm",
-              "cui"
+              "cui",
+              "er"
             ],
             "style": "camelCase"
           }
@@ -54,16 +56,16 @@
               "private-instance-field",
               "private-abstract-field",
 
-              "public-static-field",
-              "public-decorated-field",
-              "public-instance-field",
-              "public-abstract-field",
-
               "protected-static-field",
               "protected-decorated-field",
               "protected-instance-field",
               "protected-abstract-field",
               "protected-field",
+
+              "public-static-field",
+              "public-decorated-field",
+              "public-instance-field",
+              "public-abstract-field",
 
               "public-constructor",
               
@@ -110,7 +112,15 @@
           }
         ],
         "no-shadow": "off",
-        "@typescript-eslint/no-shadow": ["error"]
+        "@typescript-eslint/no-shadow": ["error"],
+        "no-unused-expressions": "off",
+        "@typescript-eslint/no-unused-expressions": [
+          "error",
+          {
+            "allowShortCircuit": true,
+            "allowTernary": true
+          }
+        ]
       }
     },
     {
